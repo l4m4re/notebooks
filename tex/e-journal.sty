@@ -1,0 +1,44 @@
+%% This is Article E-Print Style, created by Dmitri Rabounski %%
+
+
+\renewcommand{\sectionmark}[1]{\markright
+{\thesection\hspace{0.7em}#1}   % left mark
+{}   % right mark
+}
+
+\renewcommand{\@evenhead}%
+{\vbox{\hbox to\textwidth{\makebox[4.8cm][l]{Volume 
+13 (2017)\rule[-5pt]{0pt}{0pt}}\hfil 
+{PROGRESS IN PHYSICS}\hfil
+\makebox[4.8cm][r]{Issue 4 (October)}}\hrule}}
+
+
+\renewcommand{\@oddhead}%
+{\vbox{\hbox to\textwidth{\makebox[4.8cm][l]{Issue 4 (October)\rule[-5pt]{0pt}{0pt}}\hfil 
+{PROGRESS IN PHYSICS}\hfil
+\makebox[4.8cm][r]{Volume 13 (2017)\rule[-5pt]{0pt}{0pt}}}\hrule}}
+
+\renewcommand{\@evenfoot}{\small \thepage\hfil \rightmark}
+\renewcommand{\@oddfoot}{\small \leftmark\hfil \thepage}
+
+
+
+\renewcommand{\@cite}[2]{[{#1\if@tempswa , #2\fi}]}
+\renewcommand{\@biblabel}[1]{#1.}
+
+\renewcommand{\section}{\@startsection{section}{1}{0pt}%
+{-2.0ex plus -1ex minus -.1ex}{1.0ex plus .1ex}%
+{\noindent\normalsize\bf \rule{1pt}{0pt}}}
+
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}%
+{-2.0ex plus -1ex minus -.1ex}{1.0ex plus.1ex}%
+{\noindent\normalsize\bf \rule{1pt}{0pt}}}
+
+
+\renewcommand{\@listI}{\leftmargin=\leftmargini
+  \labelwidth=\leftmargini
+  \addtolength{\labelwidth}{-\labelsep}%
+  \setlength{\topsep}{3.5pt plus 1pt minus 1pt}%
+  \setlength{\parsep}{1.5pt plus .5pt minus .5pt}%
+  \itemsep=\parsep}
+

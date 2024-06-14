@@ -1,0 +1,1137 @@
+%&latex2e
+
+
+\documentclass[twoside,final]{article}
+\usepackage{latexsym,e-journal}
+
+
+
+\usepackage[letterpaper]{geometry}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usepackage[perpage,symbol*]{footmisc}
+\usepackage[final]{graphicx}
+%\usepackage{pstricks}
+\usepackage{cite}
+
+\usepackage[varg]{txfonts}
+
+
+\oddsidemargin=-0.20in
+\evensidemargin=-0.20in
+\topmargin=-30pt
+
+\textwidth=498pt
+\textheight=646pt
+
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=blue]{hyperref}
+%\usepackage[colorlinks=false]{hyperref}
+
+\begin{document}
+
+%\sloppy
+
+\renewcommand{\refname}{References}
+\renewcommand{\tablename}{\small Table}
+\renewcommand{\figurename}{\small Fig.}
+\renewcommand{\contentsname}{Contents}
+
+
+\twocolumn[%
+\begin{center}
+\renewcommand{\baselinestretch}{0.93}
+{\Large\bfseries 
+
+Revision and integration of Maxwell's and Navier-Stokes' Equations and the
+origin of quantization in Superfluids and Spacetime itself
+
+
+
+}\par
+\renewcommand{\baselinestretch}{1.0}
+\bigskip
+Arend Lammertink\\ 
+{\footnotesize  Schoolstraat 107, 7471 WV, Goor, The Netherlands.\rule{0pt}{12pt}
+E-mail: lamare@gmail.com\\
+}\par
+\medskip
+{\small\parbox{11cm}{%
+
+\textbf{Abstract.} 
+
+It is well known that the Maxwell equations predict the behavior of the
+electromagnetic field very well. However, they predict only one wave equation
+while there are significant differences between the "near" and "far" fields and
+various anomalies have been observed involving the detection of super luminous
+signals in experiments with electrically short coaxial cables 
+\cite{Kuehn2019, Kuehn2020}, microwaves \cite{Ranfagni2004, Allaria2011, Agresti2015,
+Mojahedi2000, Musha2019, Wang2003, Walker2006, Solemino2014, Ranfagni2006,
+Walker2000}, optical fibers \cite{Gonzalez2005, Stenner2016, Thevenaz2008,
+Wang2000}, as well as other methods \cite{Ardavan2004, Niang2018,
+Wheatstone1834, Tesla1900}. 
+
+We show that the mathematical Laplace operator defines a complete set of vector
+fields consisting of two potential fields and two fields of force, which form a
+Helmholtz decomposition of any given vector field $\mathbf{F}$. We found that
+neither in Maxwell's equations nor in fluid dynamics vector theory this result
+has been recognized, which causes the potential fields to not be uniquely
+defined and also makes the Navier-Stokes equations unnecessarily complicated and
+introduces undesirable redundancy as well. We show that equivalents to both the
+Maxwell equations as well as the Navier-Stokes equations can be directly derived
+from a single diffusion equation describing Newton's second law in 3D. We found
+that the diffusion constant $k$ in this equation has the same value as the speed
+of light squared, but has a unit of measurement in meters squared per second
+thus uncovering problems with time derivatives in current theories, showing
+among others that the mass-energy equivalence principle is untenable. Finally,
+we show that the diffusion equation we found can be divided by mass density
+$\rho$, resulting in a velocity diffusion equation that only has units of
+measurement in meters and seconds, thus decoupling the dynamics of the medium
+from it's substance, mass density $\rho$. This reveals the quantized nature of
+spacetime itself, whereby the quantum circulation constant k is found to govern
+the dynamics of physical reality, leading to the conclusion that at the
+fundamental quantum level only dynamic viscous forces exist while static elastic
+forces are an illusion created by problems with a number of time derivatives in
+current theories.
+
+With our equivalents for the Maxwell equations three types of wave phenomena can
+be described, including super luminous longitudinal sound-like waves that can
+explain the mentioned anomalies. This paper contributes to the growing body of
+work revisiting Maxwell's equations \cite{vanVlaenderen2001, Barrett1993,
+Pinheiro2005, Behera2018, Nedic2017, Atsukovsky2011, Arbab2014, Onoochin2019,
+Gray2019, Shaw2014} by deriving all of the fields from a single equation, so the
+result is known to be mathematically consistent and free of singularities and
+uniquely defines the potential fields thus eliminating gauge freedom. Unlike
+Maxwell's equations, which are the result of the entanglement of Faraday's
+circuit level law with the more fundamental medium arguably creating most of the
+problems in current theoretical physics, these revisions describe the three
+different electromagnetic waves observed in practice and so enable a better
+mathematical representation.
+
+
+Keywords: Classical Electrodynamics, Superfluid medium, Fluid Dynamics,
+Theoretical Physics, Vector Calculus.
+
+
+}}\smallskip
+\end{center}]{%
+
+
+\setcounter{section}{0}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{page}{1}
+
+
+\markboth{Your Full Names. Short Title of Your Paper}{\thepage}
+\markright{Your Full Names. Short Title of Your Paper}
+
+
+\section{Introduction}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+In 1861, James Clerk Maxwell published his paper "On Physical Lines of Force"
+\cite{Maxwell1861}, wherein he theoretically derived a set of twenty equations
+which accurately described the electromagnetic field insofar as known at that
+time. He modeled the magnetic field using a molecular vortex model of Michael
+Faraday's "lines of force" in conjunction with the experimental result of Weber
+and Kohlrausch, who determined in 1855 that there was a quantity related to
+electricity and magnetism, the ratio of the absolute electromagnetic unit of
+charge to the absolute electrostatic unit of charge, and determined that it
+should have units of velocity. In an experiment, which involved charging and
+discharging a Leyden jar and measuring the magnetic force from the discharge
+current, they found a value 3.107e8 m/s, remarkably close to the speed of light.
+
+In 1884, Oliver Heaviside, concurrently with similar work by Josiah Willard 
+Gibbs and Heinrich Hertz, grouped Max\-well's twenty equations together into a set
+of only four, via vector notation. This group of four equations was known
+variously as the Hertz-Heaviside equations and the Maxwell-Hertz equations but
+are now universally known as Maxwell's equations. 
+
+The Maxwell equations predict the existence of just one type of electromagnetic
+wave, even though it is now known that at least two electro\-magnetic wave
+phenomena exist, name\-ly the "near" and the "far" fields. The "near" field has
+been shown to be a non-radiating surface wave that is guidable along a
+completely unshielded single conductor \cite{Elmore2019} and can be applied for
+wide band low loss communication systems. The Maxwell equations have not been
+revised to incorporate this new knowledge.
+
+Given the above, the following questions should be asked: 
+
+\begin{itemize}
+\item What is charge?
+\item Why is it a property of certain particles?
+\end{itemize}
+
+As long as we insist that charge is an elemental quantity that is a property of
+certain particles, we cannot answer these questions. Also, when the wave
+particle duality principle is considered in relation to what is considered to be
+the cause for electromagnetic radiation, charged particles, in Maxwell's
+equations electromagnetic radiation is essentially considered to be caused by
+(quanta of) electromagnetic radiation, an obvious case of circular logic which
+is not desirable. 
+
+In the area of vector calculus, Helmholtz's theorem, also known as the
+fundamental theorem of vector calculus, states that any sufficiently smooth,
+rapidly decaying vector field in three dimensions can be resolved into the sum
+of an irrotational (curl-free) vector field and a solenoidal (divergence-free)
+vector field; this is known as the Helmholtz decomposition. A terminology often
+used in physics refers to the curl-free component of a vector field as the
+longitudinal component and the divergence-free component as the transverse
+component. This theorem is also of great importance in electromagnetic (EM) and
+microwave engineering, especially for solving the low-frequency breakdown issues
+caused by the decoupling of electric and magnetic fields \cite{Xiong2014}.
+Further, a vector field can be uniquely specified by a prescribed divergence and
+curl and it can be shown that the Helmholtz theorem holds for arbitrary vector
+fields, both static and time-dependent \cite{Oleinik2003}.
+
+In potential theory, the study of harmonic functions, the Laplace equation is
+very important, amongst other with regards to consideration of the symmetries of
+the Laplace equation. The symmetries of the n-dimensional Laplace equation are
+exactly the conformal symmetries of the n-dimensional Euclidean space, which has
+several implications. One can systematically obtain the solutions of the Laplace
+equation which arise from separation of variables such as spherical harmonic
+solutions and Fourier series. By taking linear superpositions of these
+solutions, one can produce large classes of harmonic functions which can be
+shown to be dense in the space of all harmonic functions under suitable
+topologies. 
+
+The Laplace equation as well as the more general Poisson equation are 2nd order
+differential equations, in both of which the Laplacian represents the flux
+density of the gradient flow of a function. In one dimension, the Laplacian
+simply is ${\partial}${\texttwosuperior}/${\partial}$x{\texttwosuperior},
+representing the curvature of a given function f. For scalar functions in 3D,
+the Laplacian is a common generalization of the second derivative and is the
+differential operator defined by:
+
+\begin{equation}
+\nabla ^2f=\frac{\partial ^2f}{\partial x^2}\text{ + }\frac{\partial ^2f}{\partial y^2}\text{ + }\frac{\partial
+^2f}{\partial z^2}
+\end{equation}
+
+The Laplacian of a scalar function is equal to the divergence of the gradient
+and the trace of the Hessian matrix. The vector Laplacian is a further
+generalization in three dimensions and defines the second order spatial
+derivative of any given vector field F, the ``3D curvature'' if you will, and is
+given by the identity:
+
+\begin{equation}
+\nabla ^2 \boldsymbol{F}=\nabla (\nabla \cdot \boldsymbol{F})-\nabla \times (\nabla \times \boldsymbol{F})
+\end{equation}
+
+
+Whereas the scalar Laplacian applies to a scalar field and returns a scalar
+quantity, the vector Laplacian applies to a vector field, returning a vector
+quantity. When computed in orthonormal Cartesian coordinates, the returned
+vector field is equal to the vector field of the scalar Laplacian applied to
+each vector component. 
+
+With this identity, a full 3D generalization of the Poisson equation can also be
+defined, the vector wave equation, which has three independent
+solutions
+
+\footnote{ Julius Adams Stratton, Electromagnetic Theory, McGraw-Hill Book
+Company, New York, 1941.\par  }
+
+, the vector spherical harmonics:
+
+\begin{equation}\label{seq:refText3}
+{\nabla}^2 \boldsymbol{F}  + k^2 \boldsymbol{F}
+ = \nabla \nabla \cdot \boldsymbol{F}  
+ - \nabla \times \nabla \times \boldsymbol{F}
+ + k^2 \boldsymbol{F} =0.
+\end{equation}
+
+section{Methods}
+
+The terms in the definition for the vector Laplacian can be negated:
+
+\begin{equation}
+-\nabla ^2\boldsubformula F=-\nabla (\nabla \cdot \boldsubformula F)+\nabla \times (\nabla \times \boldsubformula F)
+\end{equation}
+
+and then the terms in this identity can be written out to define a vector field
+for each of these terms:  
+
+\begin{equation}\label{seq:refText5}
+\begin{matrix}\hfill \boldsubformula A&=&\nabla \times \boldsubformula F\hfill\null \\\hfill \varphi &=&\nabla \cdot
+\boldsubformula F\hfill\null \\\hfill \boldsubformula B&=&\nabla \times \boldsubformula A\text{ = }\nabla \times
+(\nabla \times \boldsubformula F)\hfill\null \\\hfill \boldsubformula E&=&-\nabla \varphi \text{ = }-\nabla (\nabla
+\cdot \boldsubformula F)\hfill\null \end{matrix}
+\end{equation}
+And, since the curl of the gradient of any twice-differentiable scalar field
+$\varphi $ is always the zero vector (${\nabla}${\texttimes}(${\nabla}$$\varphi
+$)=0), and the divergence of the curl of any vector field A is always zero as
+well (${\nabla}{\cdot}$(${\nabla}${\texttimes}A)=0), we can establish that E is
+curl-free and B is divergence-free, and we can write: 
+
+\begin{equation}
+\begin{matrix}\hfill \nabla \times \boldsubformula E&=&0\hfill\null \\\hfill \nabla \cdot \boldsubformula
+B&=&0\hfill\null \end{matrix}
+\end{equation}
+As can be seen from this, the vector Laplacian establishes a Helmholtz
+decomposition of the vector field F into an irrotational or curl free component
+E and a divergence free component B, along with associated potential fields
+$\varphi $ and A, all from a single equation c.q. operator. 
+
+Thus we have shown that the mathematical definitions for potential fields are
+hidden within the Laplace operator c.q. the fundamental theorem of vector
+calculus c.q. the second order spatial derivative, which has tremendous
+consequences for both the analytical analysis of the electromagnetic field as
+well as fluid dynamics vector theory. The symmetry between the fields thus
+defined is fundamental and has been mathematically proven to be correct, so it
+is vital to maintain this fundamental symmetry in our physics equations. 
+
+So far, we have considered the general case, which is valid for any given vector
+field F. In the following, we will use the m subscript to refer to the
+electromagnetic domain along Maxwell's equations, while the f subscript is used
+for the fluid dynamics domain. 
+
+In Maxwell's equations, the curl of the electric field Em is defined by the
+Maxwell-Faraday equation:
+
+\begin{equation}
+\nabla \times \boldsubformula E_m=-\frac{\partial \boldsubformula B_m}{\partial t},
+\end{equation}
+which is obvious not equal to zero for electromagnetic fields varying with time
+and therefore the dynamic Maxwell equations cannot be second order spatial
+derivatives of any vector field Fm as defined by the Laplacian. 
+
+Herewith, we have shown that no vector field Fm exists for which Maxwell's
+equations are the second order spatial derivative and therefore Maxwell's
+equations do not satisfy the vector Laplace equation. The end result of this is
+that while the solutions of Laplace's equation are all possible harmonic wave
+functions, with Maxwell's equations there is only one resulting wave equation
+which defines a ``transverse'' wave, whereby the Em and Bm components are always
+perpendicular with respect to one another. This is also the reason why no
+separate wave equations can be derived for the ``near'' and ``far'' fields.
+
+Furthermore, in Maxwell's equations, the two potential fields which are used
+with Helmholtz's theorem are the electrical potential $\varphi $m and the
+magnetic vector potential Am, which are defined by the equations
+
+\footnote{ Feynman, Richard P; Leighton, Robert B; Sands, Matthew (1964). The
+Feynman Lectures on Physics Volume 2. Addison-Wesley. ISBN 0-201-02117-X. (pp.
+15-15)\par }:
+
+\begin{equation}
+\begin{matrix}\hfill \boldsubformula B_m&=&\nabla \times \boldsubformula A_m\hfill\null \\\hfill \boldsubformula
+E_m&=&-\nabla \varphi _m-\frac{\partial \boldsubformula A_m}{\partial t}\hfill\null \end{matrix}
+\end{equation}
+where Bm is the magnetic field and Em is the electric field.
+
+The Helmholtz theorem can also be described as follows. Let A be a solenoidal
+vector field and $\varphi $ a scalar field on R3 which are sufficiently smooth
+and which vanish faster than 1/r2 at infinity. Then there exists a vector field
+F such that:
+
+\begin{equation}
+\nabla \boldsubformula F=\varphi \text{and}\nabla \times \boldsubformula F=\boldsubformula A
+\end{equation}
+and if additionally, the vector field F vanishes as r $\rightarrow $ ${\infty}$,
+then F is unique\footnote{ David J. Griffiths, Introduction to Electrodynamics,
+Prentice-Hall, 1999, p. 556.\par }.
+
+Now let us consider the units of measurement involved in these fields, whereby
+the three vector operators used all have a unit of measurement in per meter
+[/m]. The magnetic field Bm has a unit of measurement in Tesla [T], which is
+defined in SI units as [kg/s2{}-A]. So, for the magnetic vector potential Am we
+obtain a unit of [kg-m/s2{}-A] and for dAm/dt we obtain a unit of [kg-m/s3{}-A].
+The electric field Em has a unit of measurement in volt per meter, which is
+defined in SI units as [kg-m/s3{}-A], which matches that for dAm/dt. So, for the
+electric scalar potential $\varphi $m we obtain a unit of [kg-m2/s3{}-A].
+
+However, neither the units of measurement for Em and Bm are the same, nor are
+the units of measurements for $\varphi $m and Am. This is in contradiction with
+Helmholtz's theorem, which states that a vector field Fm exists that should have
+a unit of measurement equal to that of $\varphi $m and Am times meters or that
+of Em and Bm times meters squared.
+
+Thus, we have shown that Maxwell's equations are in contradiction with
+Helmholtz's theorem as well, which means that the potential fields defined by
+Maxwell are mathematically inconsistent and should therefore be revised.
+
+It can be shown
+
+\footnote{ Stowe, P. and Mingst, B., The Atomic Vortex Hypothesis, a Forgotten
+Path to Unification, http://vixra.org/abs/1310.0237 \par } 
+
+that by using the 19th Century's atomic vortex postulate in combination with a
+superfluid model for the medium, it is possible to construct a single simple
+integrated model which covers all major branches of physics including kinetic,
+fluid, gravitation, relativity, electromagnetism, thermal, and quantum theory.
+With this method, it can also be shown that anomalous observations such as
+Pioneer's drag and the electron's magnetic moment can be directly accounted for
+by the model. Furthermore, with this model all units of measurements are defined
+in terms of just three fundamental units of measurement: mass, length, and time. 
+
+It should be noted that there are two distinct levels in this model, with each
+playing their own role. The first consists of basic media quanta, which forms a
+superfluid model for the medium itself. The second describes vortices within the
+fluid, which forms a particle model on top of the medium model. The lower base
+level is assumed to be an (if not ideal, nearly so) in-viscous superfluid system
+obeying the defined rules of basic kinetic theory and that is the model this
+paper is originally based on, which means that the equations presented in this
+paper do not depend on the higher level Atomic Vortex Hypothesis based model.
+However, during the course of this work it became clear that viscosity plays a
+crucial role in our model, which has as consequence that an in-viscous
+superfluid model is insufficient to describe the behavior of the medium.
+
+Of course, a (viscous) superfluid model can also be described in vector notation
+and since this model essentially describes a fluid/gas like medium, we can apply
+continuum mechanics fluid dynamics vector calculus methods to re-derive the
+Maxwell equations from the basic model. As is common practice in continuum
+mechanics fluid dynamics vector theory, we can describe its dynamic behavior by
+working with the medium's flow velocity vector field
+
+\footnote{ Prieve, D.C., A
+Course in Fluid Mechanics with Vector Field Theory. Department of Chemical
+Engineering, Carnegie Mellon University,
+https://archive.org/details/ACourseInFluidMechanicsWithVectorFieldTheory\par }
+v, with v representing the local average bulk flow velocity. 
+
+It should be noted that because we use continuum mechanics, the equations
+presented in this paper are independent on the detailed description of the
+constituents of the medium itself and that there is a lower limit with respect
+to scale below which the medium can no longer be considered as a continuum. In
+that case, the model is no longer applicable, which is a well-known limitation
+of continuum mechanics. The Knudson number can be used to estimate this limit. 
+
+Within the fluid dynamics domain, a scalar potential field $\varphi $f and a
+vector potential field [D835?][DC00?]f are generally described for an
+incompressible fluid (${\nabla}{\cdot}$vf = 0) with a flow velocity field vf as
+follows
+
+\footnote{ Richardson, S., \& Cornish, A. (1977). Solution of three-dimensional
+incompressible flow problems. Journal of Fluid Mechanics, 82(2), 309-319.
+doi:10.1017/S0022112077000688
+https://pdfs.semanticscholar.org/9344/48b028a3a51a7567c2b441b5ca3e49ebb85c.pdf
+\par } (eq. 17-19):
+
+\begin{equation}
+\boldsubformula v_f=\nabla \varphi _f+\nabla \times \boldsubformula A_f
+\end{equation}
+where the velocity potential $\varphi $f is a scalar potential field, satisfying
+the Laplace equation:
+
+\begin{equation}
+\nabla ^2\varphi _f=0
+\end{equation}
+and the vorticity potential [D835?][DC00?]f is a solenoidal (i.e.
+${\nabla}$.${\cdot}$Af = 0) vector potential field satisfying the Poisson
+equation:
+
+\begin{equation}
+\nabla ^2\boldsubformula A_f=-\nabla \times (\nabla \times \boldsubformula A_f)=-\boldsubformula{\omega }_v,
+\end{equation}
+where $\omega $v=${\nabla}${\texttimes}vf  is the velocity vorticity field.
+
+However, with this definition, the potential fields are not uniquely defined and
+the boundary conditions on $\varphi $f and [D835?][DC00?]f depend on the nature
+of the flow at the boundary of the flow domain and on the topological properties
+of the flow domain, respectively.  
+
+We can can attempt to resolve this problem for the general case of a fluid that
+is both compressible and rotational by defining a compressible irrotational
+velocity field Ef for the scalar potential $\varphi $f and an incompressible
+solenoidal velocity field Bf and associated vorticity field $\omega $ for the
+vector potential [D835?][DC00?]f using the Helmholtz decomposition and negating
+the commonly used definition for the velocity potential $\varphi $f:
+
+\begin{equation}
+\boldsubformula v_f=-\nabla \varphi _f+\nabla \times \boldsubformula A_f=\boldsubformula E+\boldsubformula B
+\end{equation}
+\begin{equation}
+\begin{matrix}\hfill \boldsubformula E_f&=&-\nabla \varphi _f\hfill\null \\\hfill \boldsubformula B_f&=&\nabla \times
+\boldsubformula A_f\hfill\null \\\hfill \boldsubformula{\omega }&=&\nabla \times \boldsubformula B_f\hfill\null
+\end{matrix}
+\end{equation}
+This way, the Ef and Bf fields describe flow velocity fields with a unit of
+measurement in [m/s] and both the velocity potential and the velocity vorticity
+potential describe fields with a unit of measurement in meters squared per
+second [m2/s]. However, the primary vector field Ff thus has a unit of
+measurement in [m3/s], which describes a vector field for a volumetric flow rate
+or volume velocity. This can be considered as the flow velocity vector field vf
+times a surface S perpendicular to vf with a surface area proportional to h2
+square meters [m2], with h the physical length scale in meters [m]. This results
+in the zero vector when taking the limit for the length scale h to zero, which
+is obviously problematic.
+
+So far, we have considered the general mathematical case for the Helmholtz
+decomposition of any given vector field F as well as its common use in both the
+electrodynamics and the fluid dynamics domains, whereby we encountered a number
+of problems.  In order to resolve these problems and avoid confusion with the
+various fields used thus far, let us first introduce a new set of fields along
+equation (5): 
+
+\begin{equation}\label{seq:refText15}
+\begin{matrix}\hfill \Pi &=&\nabla \cdot \boldsubformula C\hfill\null \\\hfill \boldsubformula{\Omega }&=&\nabla \times
+\boldsubformula C\hfill\null \\\hfill \boldsubformula L&=&-\nabla \Pi \text{ = }-\nabla (\nabla \cdot \boldsubformula
+C)\hfill\null \\\hfill \boldsubformula R&=&\nabla \times \boldsubformula{\Omega }\text{ = }\nabla \times (\nabla \times
+\boldsubformula C),\hfill\null \end{matrix}
+\end{equation}
+where C is our primary vector field, $\Pi $ is the scalar potential or pressure,
+$\Omega $ is the vector potential or angular pressure, L is the longitudinal or
+translational force density and R is the rotational or angular force density.
+Hereby, $\Pi $ and $\Omega $ have a unit of measurement in Pascal [Pa] or
+Newtons per square meter [N/m2] and L and R are in Newtons per cubic meter
+[N/m3]. C is in Newtons per meter [N/m] or kilograms per second squared [kg/s2],
+thus representing an as of yet undefined quantity. Further down, we will see
+that for the medium this unit corresponds to the Ampere, hence the choice for
+using the symbol C for ``current''.
+
+Let us now consider the 3D generalization of Newton's second law for a substance
+with a certain mass density, expressed in densities or per unit volume:
+
+\begin{equation}
+\boldsubformula f_n=\rho \boldsubformula a=\rho \frac{d\boldsubformula v}{\mathit{dt}}=-{\nabla}\Pi ,
+\end{equation}
+with fn the force density in [N/m3], $\rho $ the mass density of the substance,
+v the velocity field, a the acceleration field and $\Pi $ the pressure or scalar
+potential field in Pascal [Pa], defined as the divergence of some primary field
+C. Since C should exist according to the Helmholtz decomposition and should have
+a unit of measurement in [kg/s2] or [N/m], we can define C as follows:  
+
+\begin{equation}
+\boldsubformula C=\eta \boldsubformula v,
+\end{equation}
+with $\eta $ the viscosity of the substance in [kg/m-s]. This way, we obtain a
+full 3D generalization of Newton's second law per unit volume, describing not
+only a longitudinal force density field L but also a rotational or angular force
+density field R: 
+
+\begin{equation}\label{seq:refText18}
+\rho \frac{d\boldsubformula v}{\mathit{dt}}=-{\nabla}^2\boldsubformula C=-{\nabla}^2\eta \boldsubformula
+v=-(\boldsubformula L+\boldsubformula R).
+\end{equation}
+This definition also allows us to work with the vector wave equation(3):
+
+\begin{equation}
+{\nabla}^2\boldsubformula C\text{ + }k^2\boldsubformula C=\nabla \nabla \cdot \boldsubformula C\text{ - }\nabla \times
+\nabla \times \boldsubformula C\text{ + }k^2\boldsubformula C=0.
+\end{equation}
+This is a full 3D vector wave equation, in contrast to the complex wave function
+that is often used in Quantum Mechanics. With wave functions there are only two
+axis, the real and the imaginary, which is simply insufficient to fully describe
+phenomena in three dimensions. In other words: current Quantum Mechanics
+theories lack the required dimensionality in order to be capable of fully
+describing the phenomena and are therefore incomplete. 
+
+When we divide equation (18) by mass density $\rho $, we obtain the velocity
+diffusion equation:
+
+\begin{equation}\label{seq:refText20}
+\boldsubformula a=\frac{d\boldsubformula v}{\mathit{dt}}=-{\nabla}^2k\boldsubformula v=-{\nabla}^2\Lambda ,
+\end{equation}
+with a the acceleration field in [m/s2], k the diffusivity or kinematic
+viscosity, defined by:
+
+\begin{equation}
+k=\frac{\eta }{\rho },
+\end{equation}
+and $\Lambda $ the volumetric acceleration field, defined by: 
+
+\begin{equation}
+\Lambda =k\boldsubformula{\mathit{v.}}
+\end{equation}
+This results in the diffusivity for the medium k having a unit of measurement in
+meters squared per second [m2/s] and a value equal to light speed c squared
+($c^2$), so there is a per second [/s] difference in the unit of measurement,
+suggesting that in our current models the dimensionality of certain quantities
+is off by a per second. As we shall see, this has profound consequences for our
+understanding of physical reality including the mass-energy equivalence
+principle. 
+
+This per second difference in units of measurement suggests that in our current
+models there are a number of problems involving time derivatives that have not
+been properly accounted for. When we consider that the solutions of the vector
+wave equation are harmonic functions, characterized by sine and cosine functions
+of time, it becomes clear how these problems could have arisen. Since the cosine
+is the time derivative of the sine function and vice versa, there is only a
+phase difference between the two. When we consider that all known particles
+adhere to the wave-particle duality principle and have characteristic
+oscillation frequencies that are very high, it becomes clear that the quantum
+scale phase differentials between a force acting upon a particle and the
+resulting (time delayed) acceleration of that particle are virtually
+undetectable at the macroscopic level.  
+
+Note that with this diffusion equation, the only units of measurement are the
+meter and the second, which means that we have succeeded in separating the
+dynamics over space and time from the substance (mass density) that's being
+diffused over space and time. In other words: with this diffusion equation we
+have described the quantum characteristics of spacetime itself. 
+
+Analogous to equation (20), we can also define a second order diffusion equation:
+
+\begin{equation}
+\boldsubformula j=\frac{d\boldsubformula a}{\mathit{dt}}=-k{\nabla}^2\boldsubformula a=-k\nabla ^2(-k\nabla
+^2\boldsubformula v),
+\end{equation}
+which we can work out further by multiplying by mass density $\rho $ to define
+the radiosity or intensity field I in Watts per square meter [W/m2],
+representing a heat flux density:
+
+\begin{equation}
+\rho \boldsubformula j=\rho \frac{d\boldsubformula a}{\mathit{dt}}=-\rho k\nabla ^2\boldsubformula a=-\nabla
+^2\boldsubformula I=-\eta \nabla ^2\boldsubformula a=-k\nabla ^2(\boldsubformula L+\boldsubformula R),
+\end{equation}
+or:
+
+\begin{equation}
+\boldsubformula I=k(\boldsubformula L+\boldsubformula R)
+\end{equation}
+From this, we can derive additional fields analogous to equation (15), which
+results in fields representing power density in Watts per cubic meter [W/m3] for
+the first spatial derivatives and jerk j times mass density in [N/m3{}-s3] for
+the second spatial derivatives and thus we find that the spatial derivatives of
+the intensity field I are the time derivatives of the corresponding spatial
+derivatives of our primary field C.
+
+The process of taking higher order derivatives can be continued indefinitely,
+whereby for harmonic solutions we end up with the same results over and over
+again, resulting in only a phase differential between subsequent results.  
+
+An interesting detail is that the intensity field I can also be defined as:
+
+\begin{equation}\label{seq:refText26}
+\boldsubformula I=-\kappa \boldsubformula v,
+\end{equation}
+with $\kappa $ the modulus or elasticity in [Pa] or [kg/m-s2], which has a unit
+of measurement that differs by a per second [/s] from the unit of measurement
+for viscosity $\eta $ in [Pa-s] or [kg/m-s].
+
+This reflects the difference between elastic forces and viscous (shear) forces,
+namely that the  elastic force is proportional to the amount of deformation,
+while the viscous one is proportional to the rate of deformation. So, it appears
+we can conclude that in physical reality there are no actual static (elastic)
+forces (at the quantum level) and that deep down there are only dynamic forces
+and interactions which are governed by the velocity diffusion equation(20),
+whereby what we observe as static forces are in reality the time derivatives of
+fundamentally viscous forces.
+
+This brings us to the mass energy equivalence principle:
+
+\begin{equation}
+E=\mathit{mc}^{2,}
+\end{equation}
+which can now alternatively be formulated by:
+
+\begin{equation}\label{seq:refText28}
+L=mk,
+\end{equation}
+with L the angular momentum of a particle in [J/s] or [kg-m2/s] relative to its center of mass, m the mass of the
+particle and k the diffusivity or kinematic viscosity. 
+
+This can be related to the unusual behavior of superfluids such as 3He, which
+spontaneously creates quantized vortex lines when the container holding the
+liquid is put into rotation
+
+\footnote{  Olli V. Lounasmaa and Erkki Thuneberg,
+Vortices in rotating superfluid 3He. PNAS July 6, 1999 96 (14) 7760-7767;
+https://doi.org/10.1073/pnas.96.14.7760 \par }, 
+
+thus forming a quantum vortex.
+This is a hollow core around which the superfluid flows along an irrotational
+vortex pattern (i.e. $\nabla \times \boldsubformula v=0$). This flow is
+quantized in the sense that the circulation takes on discrete values
+
+\footnote{
+Whitmore, S C, and Zimmermann, W Jr., Observation of Quantized Circulation in
+Superfluid Helium. United States: N. p., 1968. Web. doi:10.1103/PhysRev.166.181.
+\par }. 
+
+The quantum unit of circulation or quantum circulation constant is h/m,
+with h Planck's constant in [J-s] or [kg-m2/s] and m the mass of the superfluid
+particles in [kg].  Note that Planck{}'s constant has a unit of measurement
+representing angular momentum.
+
+For the medium, we can equate this quantum circulation constant to k, the
+diffusivity or kinematic viscosity, which we can now also refer to as the
+quantum circulation constant, and thus we can compute the mass of an elemental
+aether particle along:
+
+\begin{equation}
+m_{\mathit{elemental}}=\frac h k,
+\end{equation}
+which computes to approximately 7.372e-51 kg, about 20 orders of magnitude
+lighter than the electron. 
+
+When we compute the Compton wavelength for such a particle, we obtain the value
+of the speed of light c, but with a unit of measurement in meters [m] rather
+than velocity [m/s], while it's associated frequency computes to 1 Hertz [Hz].
+Since the Compton wavelength of a particle is equal to the wavelength of a
+photon whose energy is the same as the mass of that particle along the
+mass-energy equivalence principle, this puts serious question marks to the
+mass-energy equivalence principle in favor of our alternative in equation (28),
+whereby we conclude that the quantization that is observed in physics is not a
+quantization of mass/energy, but one of angular momentum. And since angular
+momentum is represented by the magnetic field, we can also conclude that it's
+the magnetic field that is quantized and that magnetic field lines are actually
+irrotational hollow core vortices in a superfluid medium with a circulation
+equal to the quantum circulation constant k. 
+
+
+
+
+\section{Citations}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+A single citation is here: \cite{eddy}. Multiple citations are as follows
+\cite{bondi,Pez,La2}. A citation containing a comment is \cite[see p.\,5]{eddy}
+
+%%%%%%%% the \cite{eddy} command generates citation number proceeded from
+%%%%%%%% the label \bibitem{eddy} in the bibliography list
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Equations}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+Here is a manual-numbered equation
+$$
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+\eqno \mbox{(1.1)}
+$$
+
+Here is an automatic-numbered equation
+\begin{equation}
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+\end{equation}
+
+Here is an unnumbered equation
+$$
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+$$
+
+
+Here is a double-line equation, typeset to the left side
+$$
+\begin{array}{ll}
+%
+\displaystyle
+ds^{2}\,= L(r)dt^{2} - M(r)(dx^{2} + dy^{2} + dz^{2}) -\\[+8pt]  % 1st row
+%
+\displaystyle
+- N(r)(xdx + ydy + zdz)^{2}, \\% 2nd row
+\end{array}
+$$
+
+
+Here are automatic-designed brackets
+\begin{equation}
+\left( \frac{\mathrm{D} N^\alpha}{ds}\right),\quad
+\left[ \frac{\mathrm{D} N^\alpha}{ds}\right],\quad
+\left\{ \frac{\mathrm{D} N^\alpha}{ds}\right\},
+\end{equation}
+where you need in an ``empty'' bracket, if you feel to insert one-side brackets.
+For instance: $\left( \right.$.
+
+
+
+Here are hand-designed brackets
+\begin{equation}
+\bigl( \frac{\mathrm{D} N^\alpha}{ds}\bigr),\quad
+\Bigl( \frac{\mathrm{D} N^\alpha}{ds}\Bigr),\quad
+\biggl( \frac{\mathrm{D} N^\alpha}{ds}\biggr) , 
+\label{gensol}
+\end{equation}
+where is no need to insert an ``empty'' bracket, so you can mere type
+\begin{equation}
+\frac{\mathrm{D} N^\alpha}{ds} =
+\Bigl\{ K^\alpha ; 0.
+\end{equation}
+
+
+%%%%%%%% [+8pt] is intendation following after the row
+%%%%%%%% \displaystyle is normalsize in the fractions
+
+%%%%%%%% this equation will be typeset to right, if use
+%%%%%%%% {rr} argument istead {ll} in the preamble of the array
+
+%%%%%%%% there is so many rows available as you feel
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Formulae in text}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+Take operators in the \,{}\, brackets in the inline formulae, for compact typing: \,{=}\, gives $w \,{=}\, c^2 $. Write down \dots \ instead of ...
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Items}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+An unnumbered item containing bullets is:
+\begin{itemize}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{itemize}
+
+
+Here is an unnumbered item:
+\begin{itemize}
+\item [] The most general metric
+\item [] The most general metric
+\item [] The most general metric
+\end{itemize}
+
+
+An Arabic-numbered item:
+\begin{enumerate}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{enumerate}
+
+
+A your-style numbered item:
+\begin{itemize}
+\item [A1] The most general metric
+\item [A2] The most general metric
+\item [A3] The most general metric
+\end{itemize}
+
+
+A double-level item (it is numbered, a sample):
+\begin{enumerate}
+\item The most general metric
+  \begin{enumerate}
+  \item The most general metric
+  \item The most general metric
+  \item The most general metric
+  \end{enumerate}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{enumerate}
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{References to text pages}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+If you like to refer a numbered formula in the {equation} environment, input \label{nickname-of-the-formula} into the formula, so you will need to type (\ref{nickname-of-the-formula}) in the text instead of (12), for instance. Such reference will automatically be changed keeping the real number of the reference, if you reorder/remove/add formulae.
+
+It works in only the {equation} environment --- auto numbered formulae.
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Cross-references}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Insert \label{myidea} in your text, then you have that page number where your label \pageref{myidea} appeared. For instance:
+
+The general equation, see formula (\ref{gensol}) in page~\pageref{gensol}, is very good.
+
+Don't use two or more same labels in the same document!
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Brackets, dividing paragraphs, etc.}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+The commands `` and '' produce open-closed brackets: ``notation''.
+
+Instead of \par one uses empty space(s) between paragraphs, because it is more visible.
+
+Any sequence following a formula starts new paragraph.
+
+If a paragraph ends by a formula, the next paragraph starts from the first line indented.
+
+Text and space in formulae:
+$$
+\mbox{here is a text in this formula}\quad
+\mbox{small space}\qquad \mbox{big space}
+$$
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Spaces and dashes}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Einstein-Infeld, space-like, Bohr-like include single dash.
+
+Page numbers 3--27 include double dash.
+
+Thin spaces in text: v.\,13, no.\,24.
+
+American long dash is---like this case.
+
+British long dash is --- like this one.
+
+We assumed the British case in our Journal.
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Normal size inside fractions}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Use ``displaystyle'' command before every line:
+\begin{equation}
+\begin{array}{ll}
+\displaystyle
+R_{p}(r) = \sqrt{\sqrt{C(r)}\left(\sqrt{C(r)} - \alpha\right)} + \\[+12pt]
+\displaystyle
++ \;\alpha\ln\left|\frac{\sqrt{\sqrt{C(r)}} + \sqrt{\sqrt{C(r)} - 
+\alpha}}{\sqrt{\alpha}}\right|.
+\end{array}
+\end{equation}
+
+Compare it with follows
+\begin{equation}
+\begin{array}{ll}
+%  \displaystyle
+R_{p}(r) = \sqrt{\sqrt{C(r)}\left(\sqrt{C(r)} - \alpha\right)} + \\[+12pt]
+%  \displaystyle
++ \;\alpha\ln\left|\frac{\sqrt{\sqrt{C(r)}} + \sqrt{\sqrt{C(r)} - 
+\alpha}}{\sqrt{\alpha}}\right|.
+\end{array}
+\end{equation}
+
+
+
+
+\section*{Acknowledgements}
+
+This work would not have been possible without the groundbreaking work of Paul
+Stowe and Barry Mingst, who succeeded in integrating the gravitational domain
+with the electromagnetic domain within a single superfluid based model. It is
+this integration that resolves the classic problems associated with aether based
+theories, namely that because the gravitational field was considered to be
+separate from the electromagnetic domain, the movements of planetary bodies
+would necessarily result in measurable disturbances in the medium. When no such
+disturbances were found in the Michelson-Morley experiment, the aether
+hypothesis was considered as having been disproven. But because the
+gravitational force is now considered to be a force caused by longitudinal
+dielectric waves, which propagate trough the medium, this argument no longer
+applies. And therewith there is no longer any reason to disregard an aether
+based theory as a basis for theoretical physics.
+
+This work would also not have been possible without the work of Eric Dollard,
+N6KPH, who replicated a lot of Tesla's experiments in the 1980's. It is his
+demonstrations and analysis of Tesla's work that enabled the very consideration
+of an aether based theory as an alternative to the current theoretical model.
+
+
+%
+\begin{flushright}\footnotesize
+Submitted on Month Day, Year / Accepted on Month Day, Year
+\end{flushright}
+
+
+\begin{thebibliography}{99}\footnotesize
+
+
+% electrically short coaxial cables
+\bibitem{Kuehn2019} K\"uhn, Steffen. (2019) Electronic data transmission at
+three times the speed of light and data rates of 2000 bits per second over long
+distances in buffer amplifier chains. DOI: 10.13140/RG.2.2.33988.78721/1
+https://www.researchgate.net/publication/335677198
+
+\bibitem{Kuehn2020} K\"uhn, Steffen. (2020). General Analytic Solution of the
+Telegrapher's Equations and the Resulting Consequences for Electrically Short
+Transmission Lines. Journal of Electromagnetic Analysis and Applications. 12.
+71-87. 10.4236/jemaa.2020.126007. 
+
+
+% microwaves
+
+\bibitem{Ranfagni2004} Ranfagni, A \& Mugnai, Daniela \& Ruggeri, Rocco. (2004).
+Unexpected behavior of crossing microwave beams. Physical review. E,
+Statistical, nonlinear, and soft matter physics. 69. 027601.
+10.1103/PhysRevE.69.027601.
+
+\bibitem{Allaria2011} Allaria, Enrico \& Mugnai, Daniela \& A.ranfagni, \& C.ranfagni,.
+(2011). Unexpected behavior of crossing of microwave and optical beams. Modern
+Physics Letters B. 19. 10.1142/S0217984905009274.
+\href{https://www.researchgate.net/publication/263801213}{https://www.researchgate.net/publication/263801213}
+
+\bibitem{Agresti2015} Agresti, Alessandro \& Cacciari, Ilaria \& Ranfagni, A \&
+Mugnai, Daniela \& Mignani, Roberto \& Petrucci, Andrea. (2015). Two possible
+interpretations of the near-field anomaly in microwave propagation. Results in
+Physics. 5. 196. 10.1016/j.rinp.2015.08.002.
+https://www.researchgate.net/publication/282609282 
+
+\bibitem{Mojahedi2000} Mojahedi, Mohammad \& Schamiloglu, Edl \& Hegeler, Frank
+\& Malloy, Kevin. (2000). Time-domain detection of superluminal group velocity
+for single microwave pulses. Physical review. E, Statistical physics, plasmas,
+fluids, and related interdisciplinary topics. 62. 5758-66.
+10.1103/PhysRevE.62.5758. https://www.researchgate.net/publication/12238975 
+
+\bibitem{Musha2019} Musha. (2019). Superluminal Speed of Photons in the
+Electromagnetic Near-Field. Recent Adv Photonics Opt 2(1):36-39.\\
+\url{https://scholars.direct/Articles/photonics-and-optics/rapo-2-007.php}
+
+\bibitem{Wang2003} Wang \& Xiong. (2003). Superluminal Behaviors of
+Electromagnetic Near-fields. https://arxiv.org/pdf/physics/0311061.pdf 
+
+\bibitem{Walker2006} Walker. (2006). Superluminal Electromagnetic and
+Gravitational Fields Generated in the Nearfield of Dipole Sources.\\
+\url{https://arxiv.org/abs/physics/0603240}
+
+\bibitem{Solemino2014} Solemino, De Lisio \& Altucci. (2014) Superluminal
+behavior in wave propagation: a famous case study in the microwave region.\\
+\url{
+http://www.societanazionalescienzeletterearti.it/pdf/161\_nota\_Solimeno-Altucci\_19-12-2014.pdf
+}    
+
+
+\bibitem{Ranfagni2006} Ranfagni, A. \& Fabeni, P. \& Pazzi, G. \& Ricci, A. \&
+Trinci, R. \& Mignani, Roberto \& Ruggeri, Rocco \& Cardone, F. \& Agresti,
+Alessandro. (2006). Observation of Zenneck-type waves in microwave propagation
+experiments. Journal of Applied Physics. 100. 024910 - 024910.
+10.1063/1.2212307. https://www.researchgate.net/publication/224453964 
+
+\bibitem{Walker2000} Walker, William. (2000). Experimental Evidence of
+Near-Field Superluminally Propagating Electromagnetic Fields.
+10.1007/0-306-48052-2\_18. https://arxiv.org/pdf/physics/0009023.pdf
+
+
+
+% optical fibers
+\bibitem{Gonzalez2005} Gonzalez-Herraez, Miguel \& Song, Kwang-Yong \&
+Th\'evenaz, Luc. (2005). Optically Controlled Slow and Fast Light in Optical
+Fibers Using Stimulated Brillouin Scattering. Applied Physics Letters. 87.
+081113 - 081113. 10.1063/1.2033147. 
+
+
+\bibitem{Stenner2016} Stenner, M.D., Gauthier, D.J. \& Neifeld, M.A., The speed
+of information in a `fast-light' optical medium, Nature. 425. 695-8.
+10.1038/nature02016. 
+
+
+\bibitem{Thevenaz2008} Th\'evenaz, Luc. (2008). ``Achievements in slow and fast
+light in optical fibres''. 1. 75 - 80. 10.1109/ICTON.2008.4598375. 
+
+\bibitem{Wang2000} Wang, L. \& Kuzmich, A \& Dogariu, Arthur. (2000). Gain-assisted
+superluminal light propagation. Nature. 406. 277-9. 10.1038/35018520. 
+
+
+
+% other methods
+
+\bibitem{Ardavan2004} Ardavan, A, Singleton, J, Ardavan, H,  Fopma, J, Halliday,
+D and Hayes, W. (2004). Experimental demonstration of a new radiation mechanism:
+emission by an oscillating, accelerated, superluminal polarization current.
+arXiv:physics/0405062 https://arxiv.org/abs/physics/0405062
+
+\bibitem{Niang2018} Niang, Anna \& de Lustrac, Andr\'e \& Burokur, Shah Nawaz.
+(2018). Broadband Superluminal Transmission Line with Non-Foster Negative
+Capacitor. 10.1049/cp.2018.1179.
+https://www.researchgate.net/publication/328410118
+
+\bibitem{Wheatstone1834} Wheatstone, Charles. (1834). An Account of Some
+Experiments to Measure the Velocity of Electricity, and the Duration of Electric
+Light. Philosophical Transactions of the Royal Society of London. 124.
+10.1098/rstl.1834.0031
+
+\bibitem{Tesla1900} Tesla, N. (1900). Art of transmitting electrical energy
+through the natural mediums. US patent No. 787,412. In this patent, Tesla
+disclosed a wireless system by which he was able to transmit electric energy
+along the earth's surface and he established that the current of his transmitter
+passed over the earth's surface with a mean velocity 471,240 kilometers per
+second, about $\pi$/2 times the speed of light.
+
+
+
+
+
+\bibitem{vanVlaenderen2001} K. J. van Vlaenderen and A. Waser, Generalization of
+Classical Electrodynamics to Admit a Scalar Field and Longitudinal Waves.
+Hadronic Journal, Vol. 24, 2001, pp. 609-628. 
+
+\bibitem{Barrett1993} Barrett, Terence. (1993). Electromagnetic phenomena not
+explained by Maxwell's equations. 10.1142/9789814360005\_0002. 
+
+\bibitem{Pinheiro2005} Pinheiro, Mario. (2005). Do Maxwell's Equations Need
+Revision? A Methodological Note. Physics Essays. 20. 10.4006/1.3119404. 
+
+\bibitem{Behera2018} Behera, Harihar \& Barik, N.. (2018). A New Set of
+Maxwell-Lorentz Equations and Rediscovery of Heaviside-Maxwellian (Vector)
+Gravity from Quantum Field Theory. 
+
+\bibitem{Nedic2017} Nedi\'{c}, S., Longitudinal Waves in Electromagnetism.
+Towards Consistent Theoretical Framework for Tesla's Eergy and Information
+Transmission. INFOTEH-JAHORINA Vol. 16, March 2017. 
+
+
+\bibitem{Atsukovsky2011} Atsukovsky, V.A., Efirodinamicheskie Osnovy
+Elektromagnetizma -- Teoria, Eksperimenty, Vedrenie. Energoatomizdat, 2011, ISBN
+978- 5- 283-03317-4. 
+
+\bibitem{Arbab2014} Arbab, Arbab \& Al-Ajmi, Mudhahir. (2014). The Modified
+Electromagnetism and the Emergent Longitudinal Wave. Applied Physics Research.
+10. 10.5539/apr.v10n2p45. 
+
+\bibitem{Onoochin2019} Onoochin, Vladimir. (2019). Longitudinal Electric field
+and the Maxwell Equation. 10.13140/RG.2.2.26478.36163. 
+
+\bibitem{Gray2019} Gray, Robert. (2019). Experimental Disproof of Maxwell and
+Related Theories of Classical Electrodynamics. 
+
+\bibitem{Shaw2014} Shaw, Duncan W. (2014). Reconsidering Maxwell's aether.
+Physics Essays, Volume 27, Number 4, December 2014, pp. 601-607(7). 
+
+
+% Introduction
+
+\bibitem{Maxwell1861} Maxwell, J. (1861). On Physical Lines of Force. The
+London. Edinburgh. 338-348. 0.1080/14786446108643067.
+
+\bibitem{Elmore2019} Elmore, G., Introduction to the Propagating Wave on a
+Single Conductor, http://www.corridor.biz/FullArticle.pdf
+
+
+\bibitem{Xiong2014} Xiong, Xiaoyan \& Sha, Wei \& Jiang, Li. (2014). Helmholtz
+decomposition based on integral equation method for electromagnetic analysis.
+Microwave and Optical Technology Letters. 56. 10.1002/mop.28454. 
+
+\bibitem{Oleinik2003} Oleinik, V.P., The Helmholtz Theorem and Superluminal
+Signals, Department of General and Theoretical Physics, National Technical
+University of Ukraine "Kiev Polytechnic Institute", Prospect Pobedy 37, Kiev,
+03056, Ukraine, https://arxiv.org/abs/quant-ph/0311124
+
+
+% template examples. REMOVE!!
+
+\bibitem{eddy} Eddington A.\,S. The mathematical
+theory of relativity. Cambridge University Press,
+Cambridge, 1924. % Here is referred book
+
+\bibitem{bondi}  Bondi~H. Negative mass in General 
+Relativity. \textit{Review of Modern Physics}, 1957, 
+v.\,29\,(3), 423--428. % Here is referred article
+
+\bibitem{Pez} Pezzaglia W. Physical applications of 
+generalized Clifford Calculus: Papatetrou equations 
+and metamorphic curvature. arXiv: gr-qc/9710027. 
+% Here is referred electronic publication
+
+\bibitem{La2}  Lambiase G., Papini G.,  Scarpetta G. Maximal acceleration
+corrections to the Lamb shift o/f one electron atoms. \textit{Nuovo Cimento},
+v.\,B112, 1997, 1003. arXiv: hep-th/9702130.
+% Here is double paper-electronic published article
+
+\end{thebibliography}
+\vspace*{-6pt}
+\centerline{\rule{72pt}{0.4pt}}
+}
+
+
+\end{document}
+
+

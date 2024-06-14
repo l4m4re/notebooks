@@ -1,0 +1,888 @@
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.4
+% see http://writer2latex.sourceforge.net for more info
+\documentclass{article}
+\usepackage[ascii]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{array}
+\usepackage{supertabular}
+\usepackage{hhline}
+\makeatletter
+\newcommand\arraybslash{\let\\\@arraycr}
+\makeatother
+\setlength\tabcolsep{1mm}
+\renewcommand\arraystretch{1.3}
+\newcounter{Text}
+\renewcommand\theText{\arabic{Text}}
+\newcommand\boldsubformula[1]{\text{\mathversion{bold}$#1$}}
+\title{}
+\author{}
+\date{2022-11-20}
+\begin{document}
+Revision and integration of Maxwell's and Navier-Stokes' Equations 
+
+and the origin of quantization in Superfluids and Spacetime itself
+
+Arend Lammertink
+
+Schoolstraat 107, 7471 WV, Goor, The Netherlands,
+
++316 5425 6426, lamare@gmail.com
+
+{}``I hope that someone will discover a more realistic way, 
+
+or rather a more tangible basis than it has been my lot to find.''
+
+Albert Einstein.
+
+DRAFT revision 33. 
+
+
+
+
+
+Now let us consider the Cauchy momentum equation without external forces working on the fluid:
+
+\begin{equation}
+\rho \frac{d\boldsubformula v}{\mathit{dt}}=-\nabla \cdot \boldsubformula P,
+\end{equation}
+with  $\boldsubformula P$  the Cauchy stress tensor, which has a unit of measurement in [N/m2] or [Pa] and is a central
+concept in the linear theory of elasticity for continuum solid bodies in static equilibrium, when the resultant force
+and moment on each axis is equal to zero. It can be demonstrated that the components of the Cauchy stress tensor in
+every material point in a body satisfy the equilibrium equations and according to the principle of conservation of
+angular momentum, equilibrium requires that the summation of moments with respect to an arbitrary point is zero, which
+leads to the conclusion that the stress tensor is symmetric, thus having only six independent stress components,
+instead of nine.
+
+In our model, we have only four independent stress components, namely the scalar and vector potentials $\Pi $ and
+$\Omega $.
+
+From this momentum equation, the Navier-Stokes equations can be derived, of which the most general one without external
+(gravitational) forces is:
+
+\begin{equation}
+\rho \frac{D\boldsubformula v}{\mathit{Dt}}=\rho \left(\frac{\partial \boldsubformula v}{\partial t}+\boldsubformula
+v\cdot \nabla \boldsubformula v\right)=-\nabla p+\nabla \cdot \left\{\eta \left(\nabla \boldsubformula v+\left(\nabla
+\boldsubformula v\right)^T-\frac 2 3\left(\nabla \cdot \boldsubformula v\right)\boldsubformula I\right)+\zeta
+\left(\nabla \cdot \boldsubformula v\right)\boldsubformula I\right\},
+\end{equation}
+with p the pressure, I the identity tensor and  $\zeta $  the volume, bulk or second viscosity. This can be re-written
+to:
+
+\begin{equation}
+\rho \frac{\mathit{\delta v}}{\mathit{\delta t}}=-{\nabla}p-\rho \left(v\cdot {\nabla}v\right)+\eta {\nabla}\cdot
+\left({\nabla}v+\left({\nabla}v\right)^T\right)+\left(\zeta -\frac{2\eta } 3\right)\left({\nabla}\cdot {\nabla}\cdot
+v\right)\mathit{I.}
+\end{equation}
+This is also a second order equation, whereby notably for the viscous term  $\eta
+{\nabla}{\cdot}\left({\nabla}v+\left({\nabla}v\right)^T\right)$  the order of the differential operators is reversed
+compared to the definition of the second spatial derivative, the vector Laplace operator, while for the elastic term, 
+$\left(\zeta -\frac{2\eta } 3\right)\left({\nabla}{\cdot}{\nabla}{\cdot}v\right)I$, the divergence of the divergence is
+taken. Also, a separate term is introduced for pressure as well as a convective term,  $\rho
+\left(v{\cdot}{\nabla}v\right)$. All this not only causes the complexity of the equations to increase dramatically
+while introducing redundancy in the symmetric stress tensor, it also ignores the fundamental symmetry between the
+compressible, irrotational components and the incompressible, solenoidal components as prescribed by the Helmholtz
+decomposition.
+
+When we compare this with our proposal, we end up with two fundamentally different approaches:
+
+\begin{enumerate}
+\item A solution that fundamentally only has viscosity and one fundamental interaction of Nature, yields harmonic
+solutions c.q. builds upon deterministic (spherical) harmonics and provides a basis for the observed quantization as
+well as a 3D generalization of the currently used under-dimensioned wave functions;
+\item A solution that has both viscosity as well as elasticity, the latter of which builds upon Brownian statistical
+mechanics and thus requires randomness and is therefore non-deterministic.  
+\end{enumerate}
+However, with our solution so far, we have lost the description of elastic behavior and thus our model is incomplete.
+This again brings us to the unusual behavior of superfluids, which is currently described with a two-fluid
+theory\footnote{ Russell J. Donnelly, {\textquotedbl}The two-fluid theory and second sound in liquid
+helium{\textquotedbl}, Physics Today 62, 34-39 (2009) https://doi.org/10.1063/1.3248499
+https://sites.fas.harvard.edu/\~{}phys191r/References/e1/donnelly2009.pdf \par }. Donnely notes a/o the following: 
+
+\begin{enumerate}
+\item In superfluid state, liquid helium can flow without friction. A test tube lowered partly into a bath of helium II
+will gradually fill by means of a thin film of liquid helium that flows without friction up the tube's outer wall.
+\item There is a thermo-mechanical effect. If two containers are connected by a very thin tube that can block any
+viscous fluid, an increase in temperature in one container will be accompanied by a rise in pressure, as seen by a
+higher liquid level in that container.
+\item The viscous properties of liquid helium lead to a paradox. The oscillations of a torsion pendulum in helium II
+will gradually decay with an apparent viscosity about one-tenth that of air, but if liquid helium is made to flow
+through a very fine tube, it will do so with no observable pressure drop---the apparent viscosity is not only small, it
+is zero!
+\end{enumerate}
+He also describes ``second sound'', fluctuations of temperature, which according to him ``has turned out to be an
+incredibly valuable tool in the study of quantum turbulence'' and provides a condensed summary:
+
+{}``After one of his discussions with London and inspired by the recently discovered effects, Tisza had the idea that
+the Bose-condensed fraction of helium II formed a superfluid that could pass through narrow tubes and thin films
+without dissipation. The uncondensed atoms, in contrast, constituted a normal fluid that was responsible for phenomena
+such as the damping of pendulums immersed in the fluid. That revolutionary idea demanded a ``two-fluid'' set of
+equations of motion and, among other things, predicted not only the existence of ordinary sound---that is, fluctuations
+in the density of the fluid---but also fluctuations in entropy or temperature, which were given the designation
+``second sound'' by Russian physicist Lev Landau. By 1938 Tisza's and London's papers had at least qualitatively
+explained all the experimental observations available at the time: the viscosity paradox, frictionless film flow, and
+the thermo-mechanical effect.''
+
+This leads to the question of whether or not the effects described by the current ``two-fluid'' theory can also be
+described by the (spatial derivatives) of the two related fields we have defined, our primary field [C] and the
+intensity field [I], since we already noted that the intensity field [I] does appear to describe elastic behavior (eq
+(26)), apart from a per second difference in units of measurement, and that when dealing with harmonic functions of
+time, such as those describing elemental particles, it is all too easy to get these time derivatives mixed up, because
+there is only a phase differential between the [C] and [I] fields and their respective spatial derivative fields. 
+
+Further, since electric current can be associated with both the curl of the magnetic field as well as with electric
+resistance and thus dissipation, it seems clear that rather than associating the absence of dissipation/resistance with
+the absence of viscosity, this absence should be associated with the absence of vorticity or turbulence. 
+
+This brings us to the idea of the ``vortex sponge''\footnote{ Edward M. Kelly, {\textquotedbl}Maxwell's Equations as
+Properties of the Vortex Sponge{\textquotedbl}, American Journal of Physics 31, 785-791 (1963)
+https://doi.org/10.1119/1.1969085  \par },  devised by John Bernoulli in 1736, although in the shape of vortex tubes
+rather than ring vortices, which gives rise to elastic behavior of the medium because of momentum transfer effects
+arising from the fine-grained vorticity. This idea matches seamlessly to a vortex theory of atoms\footnote{ Van der
+Laan, G., ``The Vortex Theory of Atoms.'' Master's thesis, Utrecht University.
+https://dspace.library.uu.nl/bitstream/handle/1874/260711/Thesis.pdf \par  }, which was developed after around 1855 a
+new type of vortex theory emerged, the so-called `vortex sponge theory'. Instead of viewing atoms as consisting out of
+small, separate vortices, this type of theory supposed that the ether was completely filled with tiny vortices. These
+tiny, close-packed vortices made up large sponge-like structures, which gave this category of models its name. 
+
+When we consider the basic idea that particles consist of a number (quantized) vortex rings, we would then consider
+these to form such a vortex sponge, especially in the case of crystalline materials such as silicon. Therefore, we
+would associate a material substance to such a dynamic vortex sponge rather than considering the aether itself to be
+universally filled with tiny vortices.  And since in this view there are no stiff, point-like particles that bounce
+onto one another in a random manner, we would also do away with Brownian statistics and consider the interactions
+between the vortices to occur along harmonic functions of time.
+
+The question then becomes whether or not the static forces we consider at the macroscopic level really are forces along
+Newton's third:
+
+\begin{equation}
+F=ma,
+\end{equation}
+or are actually time derivatives thereof, yank, along:
+
+\begin{equation}
+Y=mj,
+\end{equation}
+with j the jerk, the time derivative of acceleration. The derivative of force with respect to time does not have a
+standard term in physics, but the term ``yank'' has recently been proposed in biomechanics\footnote{ David C. Lin,
+Craig P. McGowan, Kyle P. Blum, Lena H. Ting; Yank: the time derivative of force is an important biomechanical variable
+in sensorimotor systems. J Exp Biol 15 September 2019; 222 (18): jeb180414. doi: https://doi.org/10.1242/jeb.180414
+\par }.
+
+This would also offer further insight into what inertia, resistance to {\textquotedbl}change{\textquotedbl}, actually
+is, because the dynamic viscous forces we have described thus far are proportional to a rate of deformation and
+describe something dynamic, whereby there is a continuous flow of mass  along quantized irrotational vortices. In a
+way, this can be seen as the opposite of resistance to ``chance'' and could perhaps rather be thought of as conductance
+of ``change''.
+
+Let's illustrate that along the rotating superfluid wherein quantum vortexes are formed. Once a certain angular speed
+has been established with the rotating container, a certain number of quantum vortices have formed and the system is in
+equilibrium. In that situation, the vortices are irrotational and therefore no vorticity nor turbulence and thus no
+resistance nor dissipation. In other words: there is a steady-state situation, which could easily be confused with a
+{\textquotedbl}static{\textquotedbl} situation, were it not that these the vortex lines are visible.
+
+When we wish to increase the rotation speed of the rotating container, we must exert a
+{\textquotedbl}force{\textquotedbl} and thus we introduce turbulence until a new equilibrium is established. This way,
+we convert the energy we provide into the rotating superfluid, whereby the steady state situation becomes disturbed and
+turbulence is introduced, which results in more quantum vortices forming until eventually the turbulence dies out and a
+new equilibrium is established. Thus, from the outside it appears as though the rotating mass in the container resists
+change, but in reality it sort of stores {\textquotedbl}change{\textquotedbl} by forming additional vortices until
+there is no more turbulence.
+
+Now let us look back at equation (20),  the velocity diffusion equation:
+
+\begin{equation}
+\boldsubformula a=\frac{d\boldsubformula v}{\mathit{dt}}=-{\nabla}^2k\boldsubformula v
+\end{equation}
+with a the acceleration field in [m/s2], k the diffusivity, kinematic viscosity or quantum circulation constant. This is
+an equation with only meters and seconds and by dividing by velocity we can find that the time derivative operator can
+be related to the second spatial derivative by a single constant:
+
+\begin{equation}
+\frac d{\mathit{dt}}=-k{\nabla}^{2,}
+\end{equation}
+which suggests space and time are indeed closely related.
+
+{}-:-
+
+Intermezzo:  my current ``to do'' list, some cut\&pastes from discussions on researchgate:
+
+Where we are now is that we can describe both the quantum level as well as the superfluid level (quantum phenomena at a
+macroscopic scale) with the same equations, only different parameters like mass density and quantum circulation
+constant, whereby we find that fundamentally there are only viscous forces.
+
+What we see with superfluids is that when temperature rises (power density increases), elastic behavior emerges, which
+is currently described with a two-fluid model.
+
+It seems that this effect can be attributed to the formation of some kind of vortex sponge which gives rise to elastic
+behavior. And it also seems we can describe the effects this creates within a continuum by the definition of fields
+that are derived from the intensity field [I] rather than our primary field [C].
+
+The fields that can be defined as the second spatial derivatives of [I] have a unit of measurement describing the time
+derivative of force density, which would be yank density.
+
+What it appears to come down to is that within current physics Force and Yank have been considered as one and the same
+thing, resulting in 3D equations that break the fundamental symmetry demanded by the vector Laplace operator.
+
+So, it seems that there are actually two versions of Newton's law, which have currently been taken together into one:
+
+1) F = m a,
+
+2) Y = m j,
+
+and the challenge thus comes down to figuring out which one of the two applies where.
+
+When we put these quantities in a table:
+
+Action:\ \ kg-m[2C6?]2/s.\ \ Momentum mv: kg-m/s.  \ \ Momentum density: \ \ kg/m[2C6?]2-s 
+
+Energy: \ \ kg-m[2C6?]2/s[2C6?]2\ \ Force  ma: \ \   kg-m/s[2C6?]2  \ \ Force density:  \ \ kg/m[2C6?]2-s[2C6?]2\ \ 
+
+Power:  \ \ kg-m[2C6?]2/s[2C6?]3\ \ Yank  mj: \ \   kg-m/s[2C6?]3  \ \ Yank density:  \ \ kg/m[2C6?]2-s[2C6?]3
+
+it also seems that additional fields can be defined to describe action density and its spatial derivative, momentum
+density.
+
+{}-{}-{}-{}-
+
+{\textquotedbl}Sorry, but the root of your special problem is not vector analysis. It is your na\"ive assumption that
+you are free in selecting parts of the Navier Stokes equation to handle special problems.{\textquotedbl}
+
+Well, I must confess I was a bit too fast by assuming that because I started from the vector Laplace operator and all
+seemed to fit seamlessly, I had solved the puzzle and that the loss of a few independent stress components was nothing
+to worry about. So, guilty as charged in that respect.  
+
+However, it was not an exercise in selecting parts of Navier Stokes equations that met my needs, it was an attempt to
+derive equivalents of Navier Stokes from vector potential theory and to align these with equivalents of Maxwell and to
+derive both from one and the same equation, which turned out to represent Newton's third in 3D.
+
+Since I was familiar with the scalar and vector potentials used in Maxwell and I found that the terms in the vector
+Laplace operator can be written out and define fields that establish a Helmholtz decomposition, I became convinced that
+this is the way it should be done. When I searched for usage of a vector potential in fluid dynamics, I found this
+paper and not much more: 
+
+https://pdfs.semanticscholar.org/9344/48b028a3a51a7567c2b441b5ca3e49ebb85c.pdf 
+
+As I wrote in my paper, I attempted to define a primary vector field for the Laplace operator to work on for these,
+since that should exist according to the Helmholtz decomposition. It seemed that all I needed to do was negate the
+definition for the scalar potential, but then the unit of measurement for the primary field turned out to be in
+[m[2C6?]3/s], denoting a volumetric flow velocity, which results in the null vector when taking the limit of the volume
+to zero. So that didn't work out very well.
+
+After a lot of puzzling, I found a solution that involved viscosity, whereby I found that the kinematic viscosity nu
+yielded a value equal to light speed squared for the aether, but a mismatch in units of measurement by a per second,
+pointing to problems here and there with time derivatives. When I realized that this constant nu can also be seen as
+the quantum circulation constant, I became convinced I'm on the right track and that the thus far mysterious properties
+of superfluids (quantum phenomena on a macroscopic scale) offer the key to unlocking the mysteries of quantum
+mechanics.
+
+{\textquotedbl}The Navier Stokes equations have been derived from momentum conservation. For an incompressible fluid we
+get two partial differential equations for density and pressure. For a compressible fluid the energy balance must be
+considered, which brings temperature and heat capacity into the game.{\textquotedbl}
+
+It is rather interesting that the fields I derived from my primary field [C] do seem to describe an incompressible fluid
+(viscous behavior), while we seem to have lost compressibility and that that should bring temperature and heat capacity
+into the game.
+
+My working hypothesis is that temperature is a measure of power density and has a unit of measurement in Watts per cubic
+meter [W/m[2C6?]3], but that may not be correct since Stowe (see below) found a unit in [kg-m/s[2C6?]3].  
+
+I found a paper regarding superfluids, wherein it is stated that {\textquotedbl}second sound{\textquotedbl} waves exist
+in a superfluid, which incorporates the propagation of fluctuations in temperature:
+
+https://sites.fas.harvard.edu/\~{}phys191r/References/e1/donnelly2009.pdf 
+
+According to Donnely, this phenomena ``has turned out to be an incredibly valuable tool in the study of quantum
+turbulence''.  
+
+Thus, we have quite some hints suggesting that elastic behavior, or compressibility, indeed has to do with the (spatial
+derivatives of) the intensity field [I] I thus far payed little attention to. I've updated my overview table and also
+included another primary field [Q] of which the second spatial derivatives yield momentum density or mass flux, which I
+see as another step forward.
+
+What I think is an important detail is that the vector Laplace operator is the 3D generalization of the second spatial
+derivative, which would be d[2C6?]2/dx[2C6?]2 in 1D. This means that the 3D complexity of the vector equations we can
+define with these three vector fields [Q], [C] and [I], such as the vector wave equation, can be effortlessly reduced
+to one dimension to describe phenomena like for instance the mechanical behavior of a long rod or a long thin tube
+filled with a fluid.  
+
+{\textquotedbl}The possible approximations are ``incompressibility'', ``ideal gas'', or even ''perfect gas'' with a
+constant heat capacity. Another issue are the boundary conditions inclusive external sources and sinks, which define
+the geometry of the considered problem. Finally, the initial values are important.
+
+With your approach you stay outside of the terminology used to define Navier Stokes types of problems.{\textquotedbl}
+
+So far, I haven't solved the problem of temperature and black body radiation, but now that I realize the importance of
+the intensity field [I] and it's consequence that we have to consider yank rather than force, it seems it is only a
+matter of time before we can come full circle.
+
+First of all, it is rather interesting that the gas law also involves quantization denoted by n:
+
+P V = n Kb T, (eq 1)
+
+With T the temperature in Kelvin,
+
+P the pressure,
+
+V the volume,
+
+n the number of quanta,
+
+and Kb Boltzmann's constant.
+
+Second, I found the work of Paul Stowe very interesting, but very hard to comprehend. On the one hand, he managed to
+express all the major constants of nature in terms of just 5 constants and expressed all units of measurement in just
+three: mass, length and time, while on the other he managed to write it all down in a manner that I found very
+confusing, for instance because he refers to charge q as {\textquotedbl}divergence{\textquotedbl} while meaning
+{\textquotedbl}divergence of momentum density{\textquotedbl}:
+
+https://vixra.org/pdf/1310.0237v1.pdf 
+
+Nonetheless, valuable insights can be obtained from his work, if only as a starting point for further considerations.
+With respect to temperature and the gas law, in his eq. 20 we find a relationship between electrical charge and
+Boltzmann's constant: 
+
+Kb = h/(qc), (eq 2)
+
+with q elemental charge and h Planck's constant, which results in the conclusion that the quantization in the gas law is
+related to the quantization of the medium, which is governed by the quantum quantization constant nu. While it is nice
+that this equation yields the right number, this does not necessarily mean this equation is 100\% correct as written,
+but it certainly seems to point in the right direction. 
+
+Another interesting paper on the subject of black body radiation in relation to aether theory is this one by C.K.
+Thornhill, which gives a valuable starting point for deriving Planck's law:
+
+https://etherphysics.net/CKT1.pdf 
+
+His main argument:
+
+{\textquotedbl}Another argument against the existence of a physical ethereal medium is that Planck's empirical formula,
+for the energy distribution in a black-body radiation field, cannot be derived from the kinetic theory of a gas with
+Maxwellian statistics. Indeed, it is well-known that kinetic theory and Maxwellian statistics lead to an energy
+distribution which is a sum of Wien-type distributions, for a gas mixture with any number of different kinds of atoms
+or molecules. But this only establishes the impossibility of so deriving Planck's distribution for a gas with a finite
+variety of atoms or molecules. To assert the complete impossibility of so deriving Planck's distribution it is
+essential to eliminate the case of a gas with an infinite variety of atoms or molecules, i .e . infinite in a
+mathematical sense, but physically, in practice, a very large variety. The burden of the present paper is to show that
+this possibility cannot be eliminated, but rather that it permits a far simpler derivation of Planck's energy
+distribution than has been given anywhere heretofore.{\textquotedbl}
+
+What is interesting, is that he found a relationship between the adiabatic index $\omega $ and the number of degrees of
+freedom $\alpha $ of (aether) particles, which leads to the conclusion that $\alpha $ must be equal to 6 and he
+concludes:
+
+{\textquotedbl}Thus, the quest for a gas-like ethereal medium, satisfying Planck's form for the energy distribution, is
+directed to an ideal gas formed by an infinite variety of particles, all having six degrees of freedom.{\textquotedbl}
+
+It is this adiabatic index which provides a relationship to heat capacity, since it is also known as the heat capacity
+ratio:
+
+https://en.wikipedia.org/wiki/Heat\_capacity\_ratio 
+
+{\textquotedbl}In thermal physics and thermodynamics, the heat capacity ratio, also known as the adiabatic index, the
+ratio of specific heats, or Laplace's coefficient, is the ratio of the heat capacity at constant pressure (C\_P) to
+heat capacity at constant volume (C\_V).{\textquotedbl}
+
+So, while we clearly have not yet cracked the whole nut, it seems to me we are on the right track towards the
+formulation of a {\textquotedbl}theory of everything{\textquotedbl}, that holy grail that has thus far proven to be
+unreachable, which I'm sure will turn out to be attributable to ignoring the implications of the vector Laplace
+operator.
+
+Personally, I have no doubt both the weak and strong nuclear forces can be fully accounted for by our model c.q.
+electromagnetic forces, once completely worked out, and that the gravitational force also propagates through the
+aether, as actually confirmed by the Michelson-Morley experiment, so that we will end up with a model that is much,
+much simpler and only has one fundamental interaction of nature. 
+
+To illustrate the argument that the nuclear forces can be fully accounted for by electromagnetic forces, I
+wholeheartedly recommend the experimental work of David LaPoint, who shows this in his laboratory:
+
+https://youtu.be/siMFfNhn6dk  
+
+[end intermezzo]
+
+{}-:-
+
+So far, we have shown that it is possible to derive a complete and mathematically consistent set of fields from a single
+equation, the 3D generalization of Newton's second law, by using the LaPlace operator and working out the terms
+thereof. With this equation, we can use the vector wave equation, which has harmonic solutions, just like the wave
+function currently used in Quantum Mechanics. This makes it possible to extend the current Quantum Mechanical wave
+function solutions into full 3D solutions in a manner that maintains the fundamental symmetry of the Helmholtz
+decomposition within a framework of uniquely defined fields without gauge freedom. We have also shown that we can
+decouple the dynamics of the medium from it's substance, mass density, with the velocity diffusion equation which
+reveals that the dynamics of the medium are governed by a single constant k, the quantum circulation constant. And we
+have shown that we can take higher order derivatives of these equations over and over again, resulting in only phase
+differentials for the resulting vector spherical harmonic solutions.
+
+What this comes down to is that we have come to a deeper model of physical reality, which reveals a number of intricate
+relationships between various fields defined so far, whereby the quantum circulation constant k determines that at the
+quantum level there is an intricate balance between translational and angular momentum. This ultimately governs the
+possible harmonic solutions that can exist in the shape of particles, the oscillating dynamic structures that can be
+described by the vector spherical harmonics.  
+
+This model offers a new tangible basis for theoretical physics that may eventually very well lead to an an integrated
+``theory of everything'', which is however by no means an easy task. 
+
+So far, it has proven to be very challenging even to integrate Maxwell's equations with this basis in a manner that is
+completely consistent with the current model and it's units of measurement. Maxwell's equations essentially describe a
+phenomenological model that is based upon the assumption that some kind of fundamental quantity called ``charge''
+exists, to which a unit of measurement in Coulombs [C] has been assigned. All of the units of measurement within the
+electromagnetic domain can be derived from the Coulomb within this model, but there is no definition of what charge
+actually is nor what current actually is. Also, there is no explanation for why charge is considered to be polarized. 
+
+However, the model presented thus far has as big advantage that it describes a fluid-like medium and thus we can use
+fluid dynamics phenomena as analogies in our analysis. 
+
+Let us start with Ampere's original law to define current density J:
+
+\begin{equation}\label{seq:refText37}
+\boldsubformula J=-\nabla \times \boldsubformula{\mathit{R.}}
+\end{equation}
+And let us provide an overview of the fields defined thus far, along with their units of measurement:
+
+\begin{flushleft}
+\tablefirsthead{}
+\tablehead{}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}{|m{1.737cm}|m{1.763cm}|m{3.698cm}|m{3.7cm}|m{4.0090003cm}|}
+\hline
+ &
+$\Lambda $ =  k v &
+Q =  $\tau $ k $\rho $ v &
+C = $\eta $ v =  k $\rho $ v &
+I = $\eta $ a = k $\rho $ a = k(L+R)\\\hline
+$\Lambda $, 
+
+Q, 
+
+C, 
+
+I &
+[m3/s2]
+
+ &
+[kg/s], [N-s/m], [J-s/m2], [Pa-s-m], [C]
+
+(charge) &
+[kg/s2], [N/m]
+
+[J/m2], [Pa-m], [A]
+
+(current, action flux) &
+[kg/s3], [N/m-s], [J/m2{}-s], [Pa-m/s], [W/m2] 
+
+(radiosity Je , intensity I, 
+
+energy flux)\\\hline
+S,  $\Sigma $
+
+$\Pi $, $\Omega $
+
+T, $\chi $ &
+[m2/s2] &
+[kg/m-s], [N-s/m2], [J-s/m3], [Pa-s], [V-s]  
+
+(action density,
+
+momentum density flux) &
+[kg/m-s2], [N/m2], [J/m3], [Pa], [A/m], [V]
+
+(energy density,
+
+momentum flux, 
+
+force density flux, 
+
+pressure) &
+[kg/m-s3], [N/m2{}-s], [J/m3{}-s], [Pa/s], [W/m3], [K]
+
+(power or heat density, 
+
+force flux,
+
+yank density flux, 
+
+temperature)\\\hline
+M, $\Lambda $
+
+L, R
+
+Y, $\Psi $ &
+[m/s2]  
+
+(a = dv/dt,
+
+acceleration) &
+[kg/m2{}-s], [N-s/m3], [Pa-s/m]  
+
+($\rho $ v, momentum den sity, mass flux) &
+[kg/m2{}-s2], [N/m3], [Pa/m], [A/m2], [C/m2{}-s]
+
+($\rho $ a, force density, charge flux) &
+[kg/m2{}-s3], [N/m3{}-s], [J/m4{}-s], [Pa/m-s], [J/m4{}-s], [W/m4]
+
+($\rho $ j, yank density, current flux)\\\hline
+J = curl R
+
+(electric current density) &
+ &
+ &
+[kg/m3{}-s2], [N/m4], [Pa/m2], [A/m3] 
+
+(d2$\rho $/dt2) &
+\\\hline
+\end{supertabular}
+\end{flushleft}
+Table 1, overview of fields defined thus far.
+
+This way, we would think of the electric field as being described by L, the translational force density field, and the
+magnetic field as being described by R, the angular force density field. And thus current would represent vorticity,
+which aligns pretty well with observations such as Elmore's non-radiating guided surface wave\footnote{ Elmore, G.,
+Introduction to the Propagating Wave on a Single Conductor, http://www.corridor.biz/FullArticle.pdf\par }. From
+equation (37), this gives us a unit of measurement in kilograms per second square [kg/s2] for the Ampere and we can
+define the Ampere as well as the Coulomb by:
+
+\begin{center}
+\tablefirsthead{\centering 1 Ampere = 1 kilogram per second squared. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tablehead{\centering 1 Ampere = 1 kilogram per second squared. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}{m{14.024cm}m{1.578cm}}
+
+\end{supertabular}
+\end{center}
+\begin{center}
+\tablefirsthead{\centering 1 Coulomb = 1 kilogram per second. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tablehead{\centering 1 Coulomb = 1 kilogram per second. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}{m{14.024cm}m{1.578cm}}
+
+\end{supertabular}
+\end{center}
+We can subsequently define charge density as the divergence of momentum density:
+
+\begin{equation}
+\rho _q=\nabla \cdot (\rho \boldsubformula v)=\frac 1 k\nabla \cdot (\boldsubformula C)=\frac 1 k\Pi ,
+\end{equation}
+resulting in a unit of measurement for charge density $\rho _q$ in kilograms per cubic meter per second [kg/m3{}-s],
+which leads to the conclusion that charge density represents the time derivative of mass density.
+
+With this definition, the charge to mass ratio of a particle results in a unit of measurement in per second or Hertz
+[Hz], yielding a characteristic longitudinal oscillation frequency for such a particle. For the electron, this
+frequency computes to approximately 175.88 GHz, which falls within 10\% of the calculated spectral radiance dE$\nu
+$/d$\nu $ in the observed cosmic background radiation which peaks at 160.23 GHz and is calculated from a measured CMB
+temperature of approximately 2.725 K\footnote{ Stowe, P. and Mingst, B., The Atomic Vortex Hypothesis, a Forgotten Path
+to Unification, http://vixra.org/abs/1310.0237 \par } suggesting a possible connection. 
+
+This suggestion leads to the idea that even though we can describe the medium itself as a superfluid, we cannot consider
+even the vacuum in outer space as devoid from any particles, disturbances or (zero point) energy and thus we can
+consider it to have a certain charge density $\rho $qb0, a background charge density, which would be depending on the
+material or medium we are working with, just like the permeability and permittivity are. 
+
+This way, we can define the electric field E as follows:
+
+\begin{equation}
+\boldsubformula E=\frac 1{\rho _q}\boldsubformula L=k\frac{\boldsubformula L}{\boldsubformula{\Pi }},
+\end{equation}
+with L as defined in equation (15) and $\rho $q the charge density, resulting in a unit of measurement for the electric
+field E in meters per second [m/s]. Coulomb's law then becomes:
+
+\begin{equation}
+\boldsubformula F=q\boldsubformula E=\frac q{\rho _q}\boldsubformula L=qk\frac{\boldsubformula L}{\boldsubformula{\Pi
+}}.
+\end{equation}
+The electric (scalar) potential $\varphi $ can subsequently be defined as:
+
+\begin{equation}
+\varphi =\frac 1{\rho _q}\Pi =k=\frac{\eta }{\rho },
+\end{equation}
+with $\Pi $ the scalar pressure in Pascal [Pa] as defined in equation (15), yielding a unit of measurement in meters
+squared per second [m2/s] for the scalar electric potential $\varphi $ and thus we can define the Volt as:
+
+\begin{center}
+\tablefirsthead{\centering 1 Volt = 1 square meter per second. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tablehead{\centering 1 Volt = 1 square meter per second. &
+\raggedleft\arraybslash (\stepcounter{Text}{\theText})\\}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}{m{14.024cm}m{1.578cm}}
+
+\end{supertabular}
+\end{center}
+We can now also work out the unit of measurement for permittivity $\varepsilon $, which has an SI unit in [C2/N-m2]. By
+substitution we find that this results in a unit of measurement in kilograms per cubic meter [kg/m3] and we can equate
+the mass density of the medium $\rho $ to its permittivity:
+
+\begin{equation}
+\rho =\epsilon 
+\end{equation}
+For the magnetic field, we start out at the unit of measurement for permeability $\mu $, which is defined in SI units as
+Newtons per Ampere squared [N/A2]. By substitution we find that this corresponds [m-s2/kg], the inverse of the
+modulus/elasticity in [Pa] or [kg/m-s2]. The latter differs by a per second to the unit of measurement for viscosity
+$\eta $ in [Pa-s] or [kg/m-s], the same difference we encountered earlier and which led us to conclude that in our
+current models the dimensionality of certain quantities is off by a per second. Therefore, we define the value of
+viscosity $\eta $ but not its unit of measurement by:
+
+\begin{equation}
+\eta =\frac 1{\mu }.
+\end{equation}
+We can now define the magnetic field strength:
+
+\begin{equation}
+\boldsubformula H=\boldsubformula R,
+\end{equation}
+with R the angular force density in Newton per cubic meter [N/m3], resulting in a unit of measurement for the magnetic
+field strength in Ampere per meter squared [A/m2], which differs from the SI definition which is in Ampere per meter
+[A/m]. 
+
+The magnetic flux density then becomes:
+
+\begin{equation}
+\boldsubformula B=\mu \boldsubformula H=\mu \boldsubformula R,
+\end{equation}
+and has a unit of measurement in per meter [/m].
+
+The magnetic (vector) potential A can subsequently be defined as:
+
+\begin{equation}
+\boldsubformula A=\Omega ,
+\end{equation}
+with $\Omega $ the angular vector pressure in Pascal [Pa].
+
+This leaves us with a problem in the dimensionality of the Lorentz force, however, which is not easily resolved in a
+satisfactory manner, although dimensionally, we can resolve the problem by defining the Lorentz force as:
+
+\begin{equation}
+\boldsubformula F_L=q\lambda \boldsubformula{(v\times B)}=mc\boldsubformula{(v\times \boldsubformula B)},
+\end{equation}
+whereby $\lambda $ is the wavelength of the particle along $\lambda $=c/f. With f=q/m we then obtain q$\lambda $=mc.
+
+This brings us in the situation whereby we have obtained a fluid dynamics medium model that is capable of bridging the
+gap between the Quantum Mechanic and macroscopic worlds in a deterministic manner, but leaves us with open questions
+around the detailed nature of the Coulomb and Lorentz forces, especially in relation to the nature of charged particles
+and their mass/charge ratios. 
+
+However, it is clear that the irrotational vortex plays a dominant role in magnetics and these can also form closed loop
+rings, which explains why magnetic field lines are always closed. This suggests that toroidal ring models like
+Parson's\footnote{Alfred L. Parson, {\textquotedbl}A Magneton Theory of the Structure of the Atom{\textquotedbl},
+Smithsonian Miscellaneous Collection, Pub 2371, 80pp (Nov 1915).  \par
+https://ia802702.us.archive.org/35/items/amagnetontheory00parsgoog/amagnetontheory00parsgoog.pdf\par }  can be
+integrated with our model, especially because solid spherical harmonics can be expressed as series of toroidal
+harmonics and vice versa\footnote{ Matt Majic, Eric C. Le Ru, ``Relationships between solid spherical and toroidal
+harmonics'', arXiv:1802.03484. https://arxiv.org/abs/1802.03484\par } and it is known that the solutions to the vector
+wave equation are the spherical harmonics.
+
+When we assume that particles can indeed be considered as consisting of a number of closed loop hollow core vortex
+rings, then the physics of the vortex ring can also be expected to provide further insight in the nature of the Lorentz
+force working on charged particles. It is for example known that a vortex ring moves forward with its own self-induced
+velocity v\footnote{ SULLIVAN, I., NIEMELA, J., HERSHBERGER, R., BOLSTER, D., \& DONNELLY, R. (2008). Dynamics of thin
+vortex rings. Journal of Fluid Mechanics, 609, 319-347. doi:10.1017/S0022112008002292 
+https://www.researchgate.net/publication/232025984 \par }. And since a vortex ring has two axis of rotation, poloidal
+and toroidal, this could also offer an explanation for the existence of the polarization currently attributed to
+charge.  
+
+Either way, since all our fields are uniquely defined as solutions of the vector Laplace equation, we can establish that
+with deriving all fields from equation (18), we have eliminated ``gauge freedom'' and since we know these equations can
+be transformed using the Galilean coordinate transform, we have also eliminated the need for the Lorentz transform and
+are thus no longer bound to the universal speed limit.
+
+With this application of the fundamental theorem of vector calculus, we have thus come to a revised version of the
+Maxwell equations that not only promises to resolve all of the problems that have been found over the years, we also
+obtain a model that is easy to interpret and can be easily simulated and visualized with finite-difference time-domain
+methods (FTDT) as well. 
+
+Now let us consider the difference between the definition we found for E and the corresponding definition in Maxwell's
+equations:
+
+\begin{equation}
+\boldsubformula E_m=-\nabla \varphi _m-\frac{\partial \boldsubformula A_m}{\partial t},
+\end{equation}
+When considered from the presented perspective, this is what breaks the fundamental result of Helmholtz' decomposition,
+namely the decomposition into a rotation free translational component and a divergence free rotational component, since
+Am is not rotation free and therefore neither is its time derivative.  
+
+When taking the curl on both sides of this equation, we obtain the Maxwell-Faraday equation, representing Faraday's law
+of induction:
+
+\begin{equation}
+\nabla \times \boldsubformula E_m=-\frac{\partial \boldsubformula B_m}{\partial t},
+\end{equation}
+Faraday's law of induction is a basic law of electromagnetism predicting how a magnetic field will interact with an
+electric circuit to produce an electromotive force (EMF), which is thus a law that applies at the macroscopic level. It
+is clear that this law should not be entangled with a model for the medium and therefore our revision should be
+preferred.  
+
+Discussion and Conclusions
+
+We have shown that the terms in the Laplace operator can be written out to define a complete and mathematically
+consistent whole of four closely related vector fields which by definition form solutions to the vector Laplace
+equation, a result that has tremendous consequences for both the analytical analysis of the electromagnetic field as
+well as fluid dynamics vector theory, such as weather forecasting, oceanography and mechanical engineering. The
+symmetry between the fields thus defined is fundamental and has been mathematically proven to be correct, so it is
+vital to maintain this fundamental symmetry in our physics equations.  
+
+We have also shown that we can decouple the dynamics of the medium from it's substance, mass density, with the velocity
+diffusion equation which reveals that the dynamics of the medium are governed by a single constant k, the quantum
+circulation constant. And we have shown that we can take higher order derivatives of these equations over and over
+again, resulting in only phase differentials for the resulting vector spherical harmonic solutions.
+
+Revising Maxwell equations by deriving directly from a superfluid medium model using the Laplace operator, we have
+called upon vector theory for an ideal, compressible, viscous Newtonian superfluid that has led to equations which are
+known to be mathematically consistent, are known to be free of singularities and are invariant to the Galilean
+transform as well. This results in an integrated model which has only three fundamental units of measurement: mass,
+length and time and also explains what ``charge'' is: a compression/decompression oscillation of ``charged'' particles.
+
+
+As is known from fluid dynamics, these revised Maxwell equations predict three types of wave phenomena, which we can
+easily relate to the observed phenomena:
+
+\begin{enumerate}
+\item Longitudinal pressure waves, Tesla's superluminal waves\footnote{ Tesla, N. (1900). Art of transmitting electrical
+energy through the natural mediums. US patent No. 787,412. In this patent, Tesla disclosed a wireless system by which
+he was able to transmit electric energy along the earth's surface and he established that the current of his
+transmitter passed over the earth's surface with a mean velocity 471,240 kilometers per second, about $\pi $/2 times
+the speed of light.\par } c.q. the super luminal longitudinal dielectric mode, which he found to propagate at a speed
+of 471,240 kilometers per second, within 0.1\% of $\pi $/2 times the speed of light. The factor $\pi $/2 coincides with
+the situation whereby the theoretical reactance of a shorted lossless transmission line goes to infinity\footnote{
+Knight, David. (2016). The self-resonance and self-capacitance of solenoid coils: applicable theory, models and
+calculation methods.. 10.13140/RG.2.1.1472.0887.  https://www.researchgate.net/publication/301824613 \par } (eq 1.2)
+and thus does not support an electromagnetic wave propagation mode; 
+\end{enumerate}
+\begin{enumerate}
+\item {}``Transverse'' ``water'' surface waves, occurring at the boundary of two media with different densities such as
+the metal surfaces of an antenna and air, aka the ``near field'', Elmore's non-radiating surface waves that have been
+shown to be guidable along a completely unshielded conductor\footnote{ Elmore, G., Introduction to the Propagating Wave
+on a Single Conductor, http://www.corridor.biz/FullArticle.pdf\par };
+\end{enumerate}
+\begin{enumerate}
+\item Vortices and/or vortex rings, the ``far field'', which is known to be quantized and to incorporate a thus far
+mysterious mixture of ``particle'' and ``wave'' properties aka ``photons'', the so called ``wave particle duality''
+principle. 
+\end{enumerate}
+Even though the actual wave equations for these three wave types still need to be derived, we can already conclude these
+to exist and predict a number of their characteristics, because of the integration of the electromagnetic domain with
+the fluid dynamics domain. The latter has a tremendous advantage, namely that dynamic phenomena known to occur in
+fluids and gasses can be considered to also occur in the medium.
+
+Further Research
+
+Theoretical
+
+While the revised Maxwell equations presented in this paper describe the motions of the medium accurately in principle,
+the actual wave equations for the three predicted wave types still need to be derived and worked out. This is
+particularly complicated for the ``transverse'' ``water'' surface wave, because of the fact that in current fluid
+dynamics theory the potential fields have not been defined along the Helmholtz decomposition defined by the vector
+Laplacian as we proposed, which leads to non-uniquely defined fields and associated problems with boundary conditions.
+In order to derive a wave equation for the ``transverse'' surface wave, the incompressibility constraint would have to
+be removed from the Saint-Venant equations\footnote{ Farge, M., \& Sadourny, R. (1989). Wave-vortex dynamics in
+rotating shallow water.~Journal of Fluid Mechanics,~206, 433-462. doi:10.1017/S0022112089002351 \par } and these would
+subsequently need to be fully worked out using vector calculus methods. 
+
+Furthermore, we have also argued that Faraday's law should not be entangled with the model for the medium, which leaves
+us without revised equations for Faraday's law of induction. This leads to the question of why a DC current trough a
+wire loop results in a magnetic field, but the magnetic field of a permanent magnet does not induce a current in a wire
+wound around it. A similar question arises when a (neodymium) magnet is used as an electrode in an electrolysis
+experiment, which results in a vortex becoming visible in the electrolyte above the magnet.
+
+It is expected the answers to these questions as well as Faraday's law of induction can be worked out by considering the
+physics of the irrotational vortex, given that we found that the current density is actually one and the same thing as
+the vorticity of the medium, apart from a constant. In the absence of external forces, a vortex evolves fairly quickly
+toward the irrotational flow pattern, where the flow velocity v is inversely proportional to the distance r. The fluid
+motion in a vortex creates a dynamic pressure that is lowest in the core region, closest to the axis, and increases as
+one moves away from it. It is the gradient of this pressure that forces the fluid to follow a curved path around the
+axis and it is this pressure gradient that is directly related to the velocity potential $\Phi $fd c.q. the velocity
+field component Efd.
+
+Practical
+
+The revised Maxwell equations presented in this paper open the possibilities of further considerations and research into
+the properties of the dielectric and gravitational fields and associated wave phenomena. Because both of these fields
+are considered as one and the same within the above presented revised Maxwell paradigm, a wide range of possible
+applications become conceivable, some of which are hardly imaginable from within the current paradigm and/or are highly
+speculative while others are more straightforward.
+
+Superluminal communication
+
+This is the most direct application of the theory presented in this paper, which is supported by a number of sources
+mentioned in the abstract, the oldest of which dates back to 1834, some theoretical methods\footnote{ Shore, G.M..
+(1998). `Faster than light' photons in gravitational fields --- Causality, anomalies and horizons. Nuclear Physics B.
+460. 379-394. 10.1016/0550-3213(95)00646-X. https://www.researchgate.net/publication/223392267 \par },\footnote{ Nanni,
+Luca. (2019). ``Evanescent waves and superluminal behavior of matter''. International Journal of Modern Physics A. 34.
+1950141. 10.1142/S0217751X19501410. https://www.researchgate.net/publication/335719399 \par },\footnote{
+Pav\v{s}i\v{c}, Matej. (2011). Extra Time Like Dimensions, Superluminal Motion, and Dark Matter.
+https://www.researchgate.net/publication/51946961 \par },\footnote{ Aginian, M.A. \& Arutunian, S. \& Lazareva, E.G. \&
+Margaryan, A.V. (2018). Superluminal Synchotron Radiation. Resource-Efficient Technologies. 19-25.
+10.18799/24056537/2018/4/216. https://www.researchgate.net/publication/329985374  \par } as well as some preliminary
+experimental work by the author\footnote{ Lammertink, A.H..  Did I actually measure a superluminous signal thus
+disproving the relativity theory? \par
+https://www.researchgate.net/post/Did-I-actually-measure-a-superluminous-signal-thus-disproving-the-relativity-theory
+\par  }. There is active and ongoing experimental research in this area.
+
+Experiments regarding gravitational effects, such as aimed at obtaining thrust.
+
+The Biefeld-Brown effect is an electrical phenomenon that has been the subject of extensive research involving charging
+an asymmetric capacitor to high voltages and the effect is commonly attributed to corona discharges which occur only at
+the sharp electrode, which causes an imbalance in the number of positive and negative ions created in comparison to
+when a symmetric capacitor is used. 
+
+However, according to a report\footnote{ Bahder, Thomas; Fazi, Christian (June 2003). Force on an Asymmetric Capacitor.
+U.S. Army Research Laboratory -- via Defense Technical Information Center. http://www.dtic.mil/docs/citations/ADA416740
+ \par } by researchers from the Army Research Laboratory (ARL), the effects of ion wind was at least three orders of
+magnitude too small to account for the observed force on the asymmetric capacitor in the air. Instead, they proposed
+that the Biefeld--Brown effect may be better explained using ion drift instead of ion wind. This was later confirmed by
+researchers from the Technical University of Liberec\footnote{ Mal\'ik, M. \& Primas, J. \& Kopeck\'y, V\'aclav \&
+Svoboda, M.. (2013). Calculation and measurement of a neutral air flow velocity impacting a high voltage capacitor with
+asymmetrical electrodes. AIP Advances. 4. 10.1063/1.4864181. \par }. 
+
+If this is correct, then the need for an asymmetric capacitor raises the question if the resulting diverging electric
+field can indeed be used to obtain thrust by working on an electrically neutral dielectric, in this case a dielectric
+consisting of air and net neutral ions, and how this results in a net force acting upon the capacitor plates. It is
+known that a dielectric is always drawn from a region of weak field toward a region of stronger field. It can be shown
+that for small objects the force is proportional to the gradient of the square of the electric field, because the
+induced polarization charges are proportional to the fields and for given charges the forces are proportional to the
+field as well. There will be a net force only if the square of the field is changing from point to point, so the force
+is proportional to the gradient of the square of the field\footnote{ Feynman, R. (1963, 2006, 2010). The Feynman
+Lectures on Physics Vol. II Ch. 10: Dielectrics. (Fig. 10--8.)
+https://www.feynmanlectures.caltech.edu/II\_10.html\#Ch10-F8  \par }.
+
+Another line of research in this regard has to do with the gravitational force itself, which can be speculated to be
+caused by longitudinal dielectric flux, which causes a pushing and not a pulling force. This is supported by Van
+Flandern\footnote{ Van Flandern, T (1998). The speed of gravity ? What the experiments say. Physics Letters A. 250
+(1--3): 1--11. http://www.ldolphin.org/vanFlandern/gravityspeed.html \par }, who determined that with a purely central
+pulling force and a finite speed of gravity, the forces in a two-body system no longer point toward the center of mass,
+which would make orbits unstable. The fact alone that a central pulling gravity force requires a practically infinite
+speed makes clear that pulling gravity models are untenable and recourse must be taken to a Lesagian type of pushing
+gravity model. The longitudinal dielectric flux which would thus describe gravity is probably caused by cosmic
+(microwave) background radiation. If this naturally occurring flux had an arbitrary frequency spectrum, superconductors
+would reflect this flux and would thus shield gravity, which does not happen.
+
+However, acceleration fields outside a rotating superconductor were found\footnote{ Tajmar, Martin \& Plesescu, Florin
+\& Marhold, Klaus \& de Matos, C.. (2006). Experimental Detection of the Gravitomagnetic London Moment. \par
+},\footnote{ Tajmar, Martin \& Plesescu, Florin \& Seifert, Bernhard \& Marhold, Klaus. (2007). Measurement of
+Gravitomagnetic and Acceleration Fields Around Rotating Superconductors. ChemInform. 38. 10.1002/chin.200734232. \par
+}, which are referred to as Gravitomagnetic effects, and also anomalous acceleration signals, anomalous gyroscope
+signals and Cooper pair mass excess were found in experiments with rotating superconductors\footnote{ De Matos, C. \&
+Christian, Beck. (2009). Possible Measurable Effects of Dark Energy in Rotating Superconductors. Advances in Astronomy.
+2009. 10.1155/2009/931920. }. 
+
+It can be speculated that the relation Stowe and Mingst found between the characteristic oscillation frequency of the
+electron and the cosmic microwave background radiation is what causes the spectrum of the gravitational flux and that
+this is related to the characteristic oscillation frequencies of the electron, neutron and proton as well. If that is
+the case, then the incoming flux would resonate with the oscillating particles within the material at these specific
+frequencies, which would therefore not be blocked/reflected but would be absorbed/re-emitted along Huygens' principle.
+
+It can further be speculated that when objects are rotated, their ``clock'', the characteristic oscillation frequency of
+the elemental particles making up the material, would be influenced, causing them to deviate from the specific
+frequencies they otherwise operate at. It is conceivable that this would result in a condition whereby superconductors
+would indeed reflect the naturally occurring gravitational flux, which could explain this anomaly.
+
+
+\end{document}

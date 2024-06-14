@@ -1,0 +1,344 @@
+%&latex2e
+
+
+\documentclass[twoside,draft]{article}
+\usepackage{latexsym,e-journal}
+
+\usepackage[letterpaper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usepackage[perpage,symbol*]{footmisc}
+\usepackage[final]{graphicx}
+\usepackage{pstricks}
+\usepackage{cite}
+
+\usepackage[varg]{txfonts}
+
+\oddsidemargin=-0.20in
+\evensidemargin=-0.20in
+\topmargin=-30pt
+
+\textwidth=498pt
+\textheight=646pt
+
+
+\begin{document}
+
+\renewcommand{\refname}{References}
+\renewcommand{\tablename}{\small Table}
+\renewcommand{\figurename}{\small Fig.}
+\renewcommand{\contentsname}{Contents}
+
+
+\twocolumn[%
+\begin{center}
+\renewcommand{\baselinestretch}{0.93}
+{\Large\bfseries Type Full Title of Your Paper Here
+
+}\par
+\renewcommand{\baselinestretch}{1.0}
+\bigskip
+First Author's Your Full Name$^1\!$, \ Second Author's Full Name$^2\!$, \ and \ Third Author's Full Name$^3$\\ 
+{\footnotesize  $^1$Department of Science, City University,
+Address and Post Code, City, State.\rule{0pt}{12pt}
+E-mail: the 1st author's e-mail\\
+$^2$Department of Science, City University,
+Address and Post Code, City, State.
+E-mail: the 2nd author's email\\
+$^3$Department of Science, City University,
+Address and Post Code, City, State.
+E-mail: the 3rd author's email
+
+}\par
+\medskip
+{\small\parbox{11cm}{%
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract. Here is your abstract. Here is your abstract. 
+Here is your abstract.}}\smallskip
+\end{center}]{%
+
+
+\setcounter{section}{0}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{page}{1}
+
+
+\markboth{Your Full Names. Short Title of Your Paper}{\thepage}
+\markright{Your Full Names. Short Title of Your Paper}
+
+
+\section{Citations}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+A single citation is here: \cite{eddy}. Multiple citations are as follows \cite{bondi,Pez,La2}. A citation containing a comment is \cite[see p.\,5]{eddy}
+
+%%%%%%%% the \cite{eddy} command generates citation number proceeded from
+%%%%%%%% the label \bibitem{eddy} in the bibliography list
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Equations}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+Here is a manual-numbered equation
+$$
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+\eqno \mbox{(1.1)}
+$$
+
+Here is an automatic-numbered equation
+\begin{equation}
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+\end{equation}
+
+Here is an unnumbered equation
+$$
+r\,= \sqrt{dx^{2} + dy^{2} + dz^{2}}.
+$$
+
+
+Here is a double-line equation, typeset to the left side
+$$
+\begin{array}{ll}
+%
+\displaystyle
+ds^{2}\,= L(r)dt^{2} - M(r)(dx^{2} + dy^{2} + dz^{2}) -\\[+8pt]  % 1st row
+%
+\displaystyle
+- N(r)(xdx + ydy + zdz)^{2}, \\% 2nd row
+\end{array}
+$$
+
+
+Here are automatic-designed brackets
+\begin{equation}
+\left( \frac{\mathrm{D} N^\alpha}{ds}\right),\quad
+\left[ \frac{\mathrm{D} N^\alpha}{ds}\right],\quad
+\left\{ \frac{\mathrm{D} N^\alpha}{ds}\right\},
+\end{equation}
+where you need in an ``empty'' bracket, if you feel to insert one-side brackets. For instance: $\left( \right.$.
+
+
+
+Here are hand-designed brackets
+\begin{equation}
+\bigl( \frac{\mathrm{D} N^\alpha}{ds}\bigr),\quad
+\Bigl( \frac{\mathrm{D} N^\alpha}{ds}\Bigr),\quad
+\biggl( \frac{\mathrm{D} N^\alpha}{ds}\biggr) , 
+\label{gensol}
+\end{equation}
+where is no need to insert an ``empty'' bracket, so you can mere type
+\begin{equation}
+\frac{\mathrm{D} N^\alpha}{ds} =
+\Bigl\{ K^\alpha ; 0.
+\end{equation}
+
+
+%%%%%%%% [+8pt] is intendation following after the row
+%%%%%%%% \displaystyle is normalsize in the fractions
+
+%%%%%%%% this equation will be typeset to right, if use
+%%%%%%%% {rr} argument istead {ll} in the preamble of the array
+
+%%%%%%%% there is so many rows available as you feel
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Formulae in text}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+Take operators in the \,{}\, brackets in the inline formulae, for compact typing: \,{=}\, gives $w \,{=}\, c^2 $. Write down \dots \ instead of ...
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Items}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+An unnumbered item containing bullets is:
+\begin{itemize}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{itemize}
+
+
+Here is an unnumbered item:
+\begin{itemize}
+\item [] The most general metric
+\item [] The most general metric
+\item [] The most general metric
+\end{itemize}
+
+
+An Arabic-numbered item:
+\begin{enumerate}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{enumerate}
+
+
+A your-style numbered item:
+\begin{itemize}
+\item [A1] The most general metric
+\item [A2] The most general metric
+\item [A3] The most general metric
+\end{itemize}
+
+
+A double-level item (it is numbered, a sample):
+\begin{enumerate}
+\item The most general metric
+  \begin{enumerate}
+  \item The most general metric
+  \item The most general metric
+  \item The most general metric
+  \end{enumerate}
+\item The most general metric
+\item The most general metric
+\item The most general metric
+\end{enumerate}
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{References to text pages}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+If you like to refer a numbered formula in the {equation} environment, input \label{nickname-of-the-formula} into the formula, so you will need to type (\ref{nickname-of-the-formula}) in the text instead of (12), for instance. Such reference will automatically be changed keeping the real number of the reference, if you reorder/remove/add formulae.
+
+It works in only the {equation} environment --- auto numbered formulae.
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Cross-references}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Insert \label{myidea} in your text, then you have that page number where your label \pageref{myidea} appeared. For instance:
+
+The general equation, see formula (\ref{gensol}) in page~\pageref{gensol}, is very good.
+
+Don't use two or more same labels in the same document!
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Brackets, dividing paragraphs, etc.}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+The commands `` and '' produce open-closed brackets: ``notation''.
+
+Instead of \par one uses empty space(s) between paragraphs, because it is more visible.
+
+Any sequence following a formula starts new paragraph.
+
+If a paragraph ends by a formula, the next paragraph starts from the first line indented.
+
+Text and space in formulae:
+$$
+\mbox{here is a text in this formula}\quad
+\mbox{small space}\qquad \mbox{big space}
+$$
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Spaces and dashes}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Einstein-Infeld, space-like, Bohr-like include single dash.
+
+Page numbers 3--27 include double dash.
+
+Thin spaces in text: v.\,13, no.\,24.
+
+American long dash is---like this case.
+
+British long dash is --- like this one.
+
+We assumed the British case in our Journal.
+
+
+
+\markright{Your Full Names.  Short Title of Your Paper}
+\section{Normal size inside fractions}
+\markright{Your Full Names.  Short Title of Your Paper}
+
+
+Use ``displaystyle'' command before every line:
+\begin{equation}
+\begin{array}{ll}
+\displaystyle
+R_{p}(r) = \sqrt{\sqrt{C(r)}\left(\sqrt{C(r)} - \alpha\right)} + \\[+12pt]
+\displaystyle
++ \;\alpha\ln\left|\frac{\sqrt{\sqrt{C(r)}} + \sqrt{\sqrt{C(r)} - 
+\alpha}}{\sqrt{\alpha}}\right|.
+\end{array}
+\end{equation}
+
+Compare it with follows
+\begin{equation}
+\begin{array}{ll}
+%  \displaystyle
+R_{p}(r) = \sqrt{\sqrt{C(r)}\left(\sqrt{C(r)} - \alpha\right)} + \\[+12pt]
+%  \displaystyle
++ \;\alpha\ln\left|\frac{\sqrt{\sqrt{C(r)}} + \sqrt{\sqrt{C(r)} - 
+\alpha}}{\sqrt{\alpha}}\right|.
+\end{array}
+\end{equation}
+
+
+
+
+\section*{Acknowledgements}
+
+Here are your acknowledgements.
+%
+\begin{flushright}\footnotesize
+Submitted on Month Day, Year / Accepted on Month Day, Year
+\end{flushright}
+
+
+\begin{thebibliography}{99}\footnotesize
+
+\bibitem{eddy} Eddington A.\,S. The mathematical
+theory of relativity. Cambridge University Press,
+Cambridge, 1924. % Here is referred book
+
+\bibitem{bondi}  Bondi~H. Negative mass in General 
+Relativity. \textit{Review of Modern Physics}, 1957, 
+v.\,29\,(3), 423--428. % Here is referred article
+
+\bibitem{Pez} Pezzaglia W. Physical applications of 
+generalized Clifford Calculus: Papatetrou equations 
+and metamorphic curvature. arXiv: gr-qc/9710027. 
+% Here is referred electronic publication
+
+\bibitem{La2}  Lambiase G., Papini G.,  Scarpetta G. 
+Maximal acceleration corrections to the Lamb shift
+of one electron atoms. \textit{Nuovo Cimento}, 
+v.\,B112, 1997, 1003. arXiv: hep-th/9702130.
+% Here is double paper-electronic published article
+
+
+\end{thebibliography}
+\vspace*{-6pt}
+\centerline{\rule{72pt}{0.4pt}}
+}
+
+
+\end{document}
+
+

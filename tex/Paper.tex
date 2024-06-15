@@ -607,12 +607,79 @@ for viscosity $\eta $ in [Pa-s] or [kg/m-s].
 
 This reflects the difference between elastic forces and viscous (shear) forces,
 namely that the  elastic force is proportional to the amount of deformation,
-while the viscous one is proportional to the rate of deformation. So, it appears
+while the viscous one is proportional to the rate of deformation. 
+
+
+In our work on the implementation of a finite time difference method for the
+new model, 
+
+Ref: \url{https://github.com/l4m4re/fdtd/blob/master/fdtd/operators.py}
+
+we found that such a method is implemented on a "Staggered Yee Grid",
+essentially a computable discrete grid of vectors and scalars, located at
+specific geometrical locations on the grid. This learns that the div, grad and
+curl operators work on vectors and scalars, located at specific geometric
+locations on the grid, which implies that there are actually two, fundamentally
+different curl operators.
+
+As GitHub Copilot puts it:
+
+\begin{quote}
+  
+Q: are these correct?
+
+Yes, these functions are correct and consistent with a staggered Yee grid. The
+curl\_point function computes the point curl of a vector field F located on the
+grid points, which are the edges of the grid cells and are stored at integer
+grid points in the arrays. The output vector field curl\_F is located on the grid
+points and is therefore a point field.
+
+The `curl\_surface` function computes the surface curl of a vector field F
+located on the faces of the grid cells that are perpendicular to the x, y, and z
+axes, and are stored at half-integer grid points in the arrays, and is therefore
+a surface field.
+
+These functions are consistent with the staggered Yee grid, which is commonly
+used in electromagnetics and fluid dynamics simulations.
+
+\end{quote}
+
+
+This reflects the difference between elastic forces and viscous (shear) forces,
+namely that the  elastic force is proportional to the amount of deformation,
+while the viscous one is proportional to the rate of deformation. 
+
+So, it appears
 we can conclude that in physical reality there are no actual static (elastic)
 forces (at the quantum level) and that deep down there are only dynamic forces
 and interactions which are governed by the velocity diffusion equation(20),
 whereby what we observe as static forces are in reality the time derivatives of
 fundamentally viscous forces.
+
+% This is incorrect. thus:
+
+
+
+The elastic force is proportional to the amount of deformation, whereby the
+deformation is the time integral of the velocity field over the surface of
+a certain volume. This handles about the longitudinal half of the Helmholtz
+decomposition, of which the resulting linear force density field is defined
+as the gradient of a scalar potential field andis located at a point at the 
+center of the volume, a cube in the case of a grid cell.
+
+The viscous force is proportional to the rate of deformation, whereby the
+deformation is dynamic and involves a velocity gradient around c.q. due to a
+number of irrotational, hollow core superfluid vortices, each with a circulation
+equal to the quantum circulation constant $k$. 
+
+Thus, the viscous force is an angular phenomenon, characterized by a vector
+potential, while the elastic force is a linear phenomenon, characterized 
+by a scalar potential.
+
+
+
+
+
 
 This brings us to the mass energy equivalence principle:
 
@@ -759,7 +826,8 @@ where is no need to insert an ``empty'' bracket, so you can mere type
 \section{Formulae in text}
 \markright{Arend Lammertink. Revision of Maxwell's equations}
 
-Take operators in the \,{}\, brackets in the inline formulae, for compact typing: \,{=}\, gives $w \,{=}\, c^2 $. Write down \dots \ instead of ...
+Take operators in the \,{}\, brackets in the inline formulae, for compact
+typing: \,{=}\, gives $w \,{=}\, c^2 $. Write down \dots \ instead of ...
 
 
 \markright{Arend Lammertink. Revision of Maxwell's equations}
@@ -818,7 +886,11 @@ A double-level item (it is numbered, a sample):
 \markright{Arend Lammertink. Revision of Maxwell's equations}
 
 
-If you like to refer a numbered formula in the {equation} environment, input \label{nickname-of-the-formula} into the formula, so you will need to type (\ref{nickname-of-the-formula}) in the text instead of (12), for instance. Such reference will automatically be changed keeping the real number of the reference, if you reorder/remove/add formulae.
+If you like to refer a numbered formula in the {equation} environment, input
+\label{nickname-of-the-formula} into the formula, so you will need to type
+(\ref{nickname-of-the-formula}) in the text instead of (12), for instance. Such
+reference will automatically be changed keeping the real number of the
+reference, if you reorder/remove/add formulae.
 
 It works in only the {equation} environment --- auto numbered formulae.
 
@@ -829,9 +901,11 @@ It works in only the {equation} environment --- auto numbered formulae.
 \markright{Arend Lammertink. Revision of Maxwell's equations}
 
 
-Insert \label{myidea} in your text, then you have that page number where your label \pageref{myidea} appeared. For instance:
+Insert \label{myidea} in your text, then you have that page number where your
+label \pageref{myidea} appeared. For instance:
 
-The general equation, see formula (\ref{gensol}) in page~\pageref{gensol}, is very good.
+The general equation, see formula (\ref{gensol}) in page~\pageref{gensol}, is
+very good.
 
 Don't use two or more same labels in the same document!
 

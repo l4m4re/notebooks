@@ -51,7 +51,7 @@ def base1(beta):
     #return eta * pi * ( 1 - beta )
     return eta * pi * sqrt( 1 - beta )
 
-def base2(beta):
+def base2(beta, k_air=k_air):
     #return (m * c) / (4 * pi**3 * sqrt(3) * sqrt(1 + beta))
     #return (m * c) / (4 * pi**3 * sqrt(3) * (1 + sqrt(beta)) )
     #return (m * c) / (4 * pi**3 * sqrt(3) * (1 + beta) )
@@ -64,11 +64,11 @@ def R_1(beta):
 def R_2(beta):
     return base2(beta)/ e
 
-def Q1(beta, R):
+def Q1(beta, R ):
     return base1(beta) * R
 
-def Q2(beta, R):
-    return base2(beta) / R
+def Q2(beta, R, k_air=k_air):
+    return base2(beta,k_air) / R
 
 
 def radii_difference(beta):
@@ -79,8 +79,8 @@ def radii_difference(beta):
     #return ret
     return (R_1(beta) - R_2(beta))
 
-def q_term_difference(beta,R):
-    ret = abs(Q1(beta,R) - Q2(beta,R))
+def q_term_difference(beta,R, k_air):
+    ret = abs(Q1(beta,R) - Q2(beta,R,k_air))
     #print(f"beta: {float(beta)}, R: {float(R)}, ret: {float(ret)}")
     return ret
 
@@ -122,17 +122,19 @@ print(f"-------------------------------------------------")
 
 def objective(x):
     #return radii_difference(x[0])
-    return q_term_difference(beta=x[0],R=x[1])
+    return q_term_difference(beta=x[0],R=x[1], k_air=x[2])
 
-first_guess = [initial_beta, R1]
-bounds = Bounds([0.0005, 6.4e-26], [0.005, 6.5e-26])
 
-res = optimize.minimize(objective, x0=first_guess, bounds=bounds, method='nelder-mead', tol=1e-34, 
-                        options={'disp': False, 'maxiter': 100000})
+first_guess = [initial_beta, R1, k_air]
 
+bounds = Bounds([0.0005, 6.4e-26, 1.00058986-0.00000050 ], [0.005, 6.5e-26, 1.00058986+0.00000050])
+
+res = optimize.minimize( objective, x0=first_guess, bounds=bounds, method='nelder-mead', tol=1e-34, 
+                         options={'disp': False, 'maxiter': 100000})
 
 optimized_beta  = res.x[0]
 optimized_R     = res.x[1]
+optimized_k_air = res.x[2]
 
 # Print results
 print(f"Optimized beta          : {float(optimized_beta)}")
@@ -141,6 +143,7 @@ print(f"1 / sqrt(1 - beta)      : {float(1 / sqrt(1 - optimized_beta))}")
 print(f"1/sqrt(1 + beta)        : {float(1 / sqrt(1 + optimized_beta))}")
 
 print(f"Optimized R             : {float(optimized_R)}")
+print(f"Optimized k_air         : {float(optimized_k_air)}")
 
 q1 = Q1(optimized_beta, optimized_R)
 q2 = Q2(optimized_beta, optimized_R)

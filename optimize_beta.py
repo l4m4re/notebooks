@@ -1,57 +1,23 @@
-from mpmath import mp, mpf, sqrt, pi
+from math import sqrt, pi
 
-from nelder_mead import NelderMead
-
-# Set precision (e.g., 100 decimal places)
-mp.dps = 500
-
-# Set tighter tolerance
-tolerance = mpf('1e-35')
+from scipy import optimize
+from scipy.optimize import Bounds
 
 # Constants
-c = mpf('299792458.0')          # [m/s] - speed of light
-k = c**2                        # dynamic viscosity [m^2/s]
-h = mpf('6.62607015e-34')       # Planck's constant [J-s], [kg-m^2/s]
-m = h / k                       # elemental mass
-q = mpf('1.602176634e-19')      # Elementary charge (C)
-k_air = mpf('1.00058986')
-e = q  # * sqrt(k_air)                  # Elementary charge (C)
+c     = 299792458.0            # [m/s] - speed of light
+k     = c**2                   # dynamic viscosity [m^2/s]
+h     = 6.62607015e-34         # Planck's constant [J-s], [kg-m^2/s]
+m     = h / k                  # elemental mass
+q     = 1.602176634e-19        # Elementary charge (C)
+k_air = 1.00058986
+e     = q  # * sqrt(k_air)     # Elementary charge (C)
+eta   = 1 / (4 * pi * 1e-7)  # viscosity [Pa-s], [kg/m-s], [N-s/m^2], [J-s/m^3]
 
-print(f"e: {float(e)}")
-
-
-eta = mpf('1') / (4 * pi * mpf('1e-7'))  # viscosity [Pa-s], [kg/m-s], [N-s/m^2], [J-s/m^3]
-alpha_codata = mpf('0.007297352569311') # fine structure constant
+alpha_codata = 0.007297352569311 # fine structure constant
 
 # Experimental values https://en.wikipedia.org/wiki/Anomalous_magnetic_dipole_moment
-a_e  = mpf('0.00115965218059')    # electron magnetic moment anomaly
-a_mu = mpf('0.00116592059')       # muon magnetic moment anomaly
-
-
-def find_bounds(func, initial, step_factor=mpf('1.001'), max_iter=10000):
-    lower_bound = initial
-    upper_bound = initial
-    initial_val = func(initial)
-    lower_val = func(lower_bound)
-    upper_val = func(upper_bound)
-
-    for iter in range(max_iter):
-        if lower_val * upper_val < mpf('0.0'):
-            return lower_bound, upper_bound
-        if initial_val * lower_val < mpf('0.0'):
-            return initial, lower_bound
-        if initial_val * upper_val < mpf('0.0'):
-            return initial, upper_bound
-
-        lower_bound /= step_factor
-        upper_bound *= step_factor
-
-        lower_val = func(lower_bound)
-        upper_val = func(upper_bound)
-
-        #print(f"iter: {iter}, lower: {float(lower_bound)}, upper: {float(upper_bound)}, initial: {float(initial)}") 
-
-    raise ValueError("Failed to find bounds where the function changes sign.")
+a_e  = 0.00115965218059    # electron magnetic moment anomaly
+a_mu = 0.00116592059       # muon magnetic moment anomaly
 
 
 # \[
@@ -114,7 +80,7 @@ def radii_difference(beta):
     return (R_1(beta) - R_2(beta))
 
 def q_term_difference(beta,R):
-    ret = Q1(beta,R) - Q2(beta,R) 
+    ret = abs(Q1(beta,R) - Q2(beta,R))
     #print(f"beta: {float(beta)}, R: {float(R)}, ret: {float(ret)}")
     return ret
 
@@ -154,31 +120,19 @@ print(f"-------------------------------------------------")
 print(f"Optimizing beta...")
 print(f"-------------------------------------------------")
 
-# Example usage
 def objective(x):
-    #return x[0]**2 + x[1]**2
     #return radii_difference(x[0])
-    return q_term_difference(x[0],x[1])
+    return q_term_difference(beta=x[0],R=x[1])
+
+first_guess = [initial_beta, R1]
+bounds = Bounds([0.0005, 6.4e-26], [0.005, 6.5e-26])
+
+res = optimize.minimize(objective, x0=first_guess, bounds=bounds, method='nelder-mead', tol=1e-34, 
+                        options={'disp': False, 'maxiter': 100000})
 
 
-# Find the bounds
-#lower_bound, upper_bound = find_bounds(radii_difference, initial_beta)
-#print(f"Lower bound             : {float(lower_bound)}")
-#print(f"Upper bound             : {float(upper_bound)}")
-
-#bound_fac = mpf('1.02')
-
-func = objective
-params = {
-    "beta": ["mpf", initial_beta, (0.0005, 0.005)],
-    "R"   : ["mpf", R1, (6.4e-26, 6.5e-26)],
-}
-
-nm = NelderMead(func, params)
-nm.minimize(n_iter=10000)
-
-optimized_beta  = nm.simplex[0].x[0]
-optimized_R     = nm.simplex[0].x[1]
+optimized_beta  = res.x[0]
+optimized_R     = res.x[1]
 
 # Print results
 print(f"Optimized beta          : {float(optimized_beta)}")
@@ -213,7 +167,7 @@ print(f"Other stuff...")
 print(f"-------------------------------------------------")
 
 
-mma = mpf('1.001165923')
+mma = 1.001165923
 
 print(f"mma                     : {float(mma)}")
 print(f"a_e + 1                 : {float(a_e + 1)}")

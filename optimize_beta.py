@@ -15,7 +15,25 @@ e = mpf('1.602176634e-19')      # Elementary charge (C)
 eta = mpf('1') / (4 * pi * mpf('1e-7'))  # viscosity [Pa-s], [kg/m-s], [N-s/m^2], [J-s/m^3]
 alpha_codata = mpf('0.007297352569311') # fine structure constant
 
-# Function definitions (unchanged)
+# Experimental values https://en.wikipedia.org/wiki/Anomalous_magnetic_dipole_moment
+a_e  = mpf('0.00115965218059')    # electron magnetic moment anomaly
+a_mu = mpf('0.00116592059')       # muon magnetic moment anomaly
+
+
+
+def Alpha(beta):
+    #return sqrt(1-beta**2) / (8 * pi**2 * sqrt(3))
+    #return 1 / (8 * pi**2 * sqrt(3) * sqrt(1-beta**2) )
+    #return 1 / (8 * pi**2 * sqrt(3) )
+    #return 1 / (8 * pi**2 * sqrt(3) * (beta + 1))
+
+    # with this, the initial value for beta results in alpha being very close to the CODATA value
+    #return 1 / (8 * pi**2 * sqrt(3) * (1 + beta))
+
+    # with this, the optimized value for beta results in alpha being very close to the CODATA value
+    return 1 / (8 * pi**2 * sqrt(3) * (1 + beta)/sqrt(1-beta**2) )
+
+
 def base1(beta):
     #return eta * pi * sqrt(1 - beta)
     #return eta * pi * ( 1 - sqrt(beta) )
@@ -40,17 +58,6 @@ def Q1(beta, R):
 def Q2(beta, R):
     return base2(beta) / R
 
-def Alpha(beta):
-    #return sqrt(1-beta**2) / (8 * pi**2 * sqrt(3))
-    #return 1 / (8 * pi**2 * sqrt(3) * sqrt(1-beta**2) )
-    #return 1 / (8 * pi**2 * sqrt(3) )
-    #return 1 / (8 * pi**2 * sqrt(3) * (beta + 1))
-
-    # with this, the initial value for beta results in alpha being very close to the CODATA value
-    #return 1 / (8 * pi**2 * sqrt(3) * (1 + beta))
-
-    # with this, the optimized value for beta results in alpha being very close to the CODATA value
-    return 1 / (8 * pi**2 * sqrt(3) * (1 + beta)/sqrt(1-beta**2) )
 
 def radii_difference(beta):
     return (R_1(beta) - R_2(beta))
@@ -178,12 +185,6 @@ qratio = q1 / q2
 print(f"q1/q2                   : {float(qratio)}")
 print(f"q1/e                    : {float(q1 / e)}")
 
-mma = mpf('1.001165923')
-mmma2 = mma**2
-
-print(f"mma                     : {float(mma)}")
-print(f"mma2                    : {float(mmma2)}")
-print(f"mma2 / mma              : {float(mmma2 / mma)}")
 
 vcmb = sqrt(optimized_beta**2 * c**2)
 print(f"vcmb                    : {float(vcmb / 1000)} km/s")
@@ -196,12 +197,12 @@ print(f"alpha / alpha_codata    : {float(alpha / alpha_codata)}")
 print(f"alpha_codata / alpha    : {float(alpha_codata / alpha)}")
 
 
-# Experimental value
-a_e = 0.00115965218059
+mma = mpf('1.001165923')
 
-print(f"mma-1                   : {float(mma - 1)}")
-print(f"a_e                     : {float(a_e)}")
-print(f"mma-1 / a_e             : {float((mma - 1) / a_e)}")
+print(f"mma                     : {float(mma)}")
+print(f"a_e + 1                 : {float(a_e + 1)}")
+print(f"a_mu + 1                : {float(a_mu + 1)}")
 
-print(f"alpha / 2 pi            : {float(alpha / (2 * pi))}")
-print(f"a_e /(alpha / 2 pi)     : {float(a_e / (alpha / (2 * pi)))}")
+print(f"(beta+1)/mma            : {float((optimized_beta + 1) / mma)}")
+print(f"(beta+1)/(a_e + 1)      : {float((optimized_beta + 1) / (a_e + 1))}")
+print(f"(beta+1)/(a_mu + 1)     : {float((optimized_beta + 1) / (a_mu + 1))}")

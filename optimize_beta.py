@@ -73,9 +73,10 @@ def Alpha(beta):
     #return 1 / (8 * pi**2 * sqrt(3/k_air) * (1 + beta))
 
     # with this, the optimized value for beta results in alpha being very close to the CODATA value
-    return 1 / (8 * pi**2 * sqrt(3) * (1 + beta)/sqrt(1-beta**2) )
+    #return 1 / (8 * pi**2 * sqrt(3) * (1 + beta)/sqrt(1-beta**2) )
 
     #return 1 / (8 * pi**2 * sqrt(3/k_air) * (1 + beta)/sqrt(1-beta**2) )
+    return 1 / (8 * pi**2 * sqrt(3/k_air) * (1)/sqrt(1-beta**2) )
 
 
 def base1(beta):
@@ -88,8 +89,8 @@ def base2(beta):
     #return (m * c) / (4 * pi**3 * sqrt(3) * sqrt(1 + beta))
     #return (m * c) / (4 * pi**3 * sqrt(3) * (1 + sqrt(beta)) )
     #return (m * c) / (4 * pi**3 * sqrt(3) * (1 + beta) )
-    return (m * c) / (4 * pi**3 * sqrt(3) * sqrt(1 + beta) )
-    #return (m * c) / (4 * pi**3 * sqrt(3/k_air) * sqrt(1 + beta) )
+    #return (m * c) / (4 * pi**3 * sqrt(3) * sqrt(1 + beta) )
+    return (m * c) / (4 * pi**3 * sqrt(3/k_air) * sqrt(1 + beta) )
 
 def R_1(beta):
     return e / base1(beta)
@@ -113,7 +114,9 @@ def radii_difference(beta):
     return (R_1(beta) - R_2(beta))
 
 def q_term_difference(beta,R):
-    return Q1(beta,R) - Q2(beta,R)
+    ret = Q1(beta,R) / Q2(beta,R) - 1
+    #print(f"beta: {float(beta)}, R: {float(R)}, ret: {float(ret)}")
+    return ret
 
 # Define initial beta using high precision
 initial_beta = (m * c * eta) / (4 * pi**2 * sqrt(3) * e**2) - 1
@@ -154,29 +157,28 @@ print(f"-------------------------------------------------")
 # Example usage
 def objective(x):
     #return x[0]**2 + x[1]**2
-    return radii_difference(x[0])
+    #return radii_difference(x[0])
+    return q_term_difference(x[0],x[1])
 
 
 # Find the bounds
-lower_bound, upper_bound = find_bounds(radii_difference, initial_beta)
-print(f"Lower bound             : {float(lower_bound)}")
-print(f"Upper bound             : {float(upper_bound)}")
+#lower_bound, upper_bound = find_bounds(radii_difference, initial_beta)
+#print(f"Lower bound             : {float(lower_bound)}")
+#print(f"Upper bound             : {float(upper_bound)}")
 
 #bound_fac = mpf('1.02')
 
 func = objective
 params = {
     "beta": ["mpf", (0.0005, 0.005)],
+    "R"   : ["mpf", (1e-27, 1e-25)],
 }
 
 nm = NelderMead(func, params)
-nm.minimize(n_iter=30000)
+nm.minimize(n_iter=100000)
 
-optimized_beta = nm.simplex[0].x[0]
-
-# Compute final R1 and R2 with high precision
-R1_optimized = R_1(optimized_beta)
-R2_optimized = R_2(optimized_beta)
+optimized_beta  = nm.simplex[0].x[0]
+optimized_R     = nm.simplex[0].x[1]
 
 # Print results
 print(f"Optimized beta          : {float(optimized_beta)}")
@@ -184,12 +186,10 @@ print(f"Initial beta / Optimized: {float(initial_beta / optimized_beta)}")
 print(f"1 / sqrt(1 - beta)      : {float(1 / sqrt(1 - optimized_beta))}")
 print(f"1/sqrt(1 + beta)        : {float(1 / sqrt(1 + optimized_beta))}")
 
-print(f"R1 (optimized)          : {float(R1_optimized)}")
-print(f"R2 (optimized)          : {float(R2_optimized)}")
-print(f"R2/R1                   : {float(R2_optimized / R1_optimized)}")
+print(f"Optimized R             : {float(optimized_R)}")
 
-q1 = Q1(optimized_beta, R1_optimized)
-q2 = Q2(optimized_beta, R2_optimized)
+q1 = Q1(optimized_beta, optimized_R)
+q2 = Q2(optimized_beta, optimized_R)
 
 print(f"q1                      : {float(q1)}")
 print(f"q2                      : {float(q2)}")

@@ -203,6 +203,35 @@ print(f"mma                     : {float(mma)}")
 print(f"a_e + 1                 : {float(a_e + 1)}")
 print(f"a_mu + 1                : {float(a_mu + 1)}")
 
-print(f"(beta+1)/mma            : {float((optimized_beta + 1) / mma)}")
-print(f"(beta+1)/(a_e + 1)      : {float((optimized_beta + 1) / (a_e + 1))}")
-print(f"(beta+1)/(a_mu + 1)     : {float((optimized_beta + 1) / (a_mu + 1))}")
+# http://www.tuks.nl/pdf/Reference_Material/Paul_Stowe/The%20Fine%20structure%20constant%20-%20Paul%20Stowe.pdf 
+#
+# >> And, an alternate theory to QED (classical Continuum Mechanics based)
+# >> suggests a variable FSC, given by the equation:
+# >>
+# >>           ___
+# >>  1       / 3    /      \2
+# >> --- = 2 /  -   | 2piMMA |
+# >> FSC    V   k    \      /
+# >>
+# >> Where MMA is the Magnetic Moment Anomaly (1.001165923) and k is the
+# >> dielectric constant of the bulk material in which its measurement is
+# >> made. With air, k ~= 1.0006, thus we get:
+# >>
+# >>
+# >> 2 sqrt(3/1.0006)(2pi[1.001165923])^2 = 137.03523
+# >>
+# >> Accurate to 0.0005%. The remaining inaccuracy can be attributed to
+# >> that of the measurement of k...
+
+# k_air = mpf('1.0006') # stowe
+# 1.00058986±0.00000050 (at STP, 900 kHz), 
+# https://doi.org/10.1063%2F1.1745374
+# "A dielectric constant of 1.00058986±0.00000050 is found for air at normal pressure and temperature"
+k_air = mpf('1.00058986')
+
+alpha_stowe = 1/(2*sqrt(3/k_air)*(2*pi*mma)**2)
+
+print(f"alpha_stowe             : {float(alpha_stowe)}")
+print(f"alpha_stowe / alpha_codata: {float(alpha_stowe / alpha_codata)}")
+print(f"alpha_codata / alpha_stowe: {float(alpha_codata / alpha_stowe)}")
+

@@ -6,7 +6,7 @@ from mpmath import mp, mpf
 
 class NelderMead(object):
 
-    def __init__(self, func, params, *args, **kwargs):
+    def __init__(self, func, params, tol=mpf('1e-500'),*args, **kwargs):
         """ the Nelder-Mead method
 
         :param func: objective function object
@@ -21,12 +21,11 @@ class NelderMead(object):
         self.p_max = []
         self.simplex = []
         self.initialized = False
-
+        self.tol = tol
         self._parse_minmax(params)
 
     def initialize(self, init_params):
         """ Initialize first simplex point
-
         :param init_params(list):
         """
         assert len(init_params) == (self.dim + 1), "Invalid length of init_params"
@@ -61,38 +60,58 @@ class NelderMead(object):
         if not invalid:
             x = [int(round(x_t)) if p_t == "integer" else x_t for p_t, x_t in zip(self.p_types, x)]
             objval = self._coef * self.func(x)
-        '''
         print("{:5d} | {} | {:>15.5f}".format(
             self.n_eval,
             " | ".join([f"{float(t):15.5f}" for t in x]),
             self._coef * float(objval)
         ))
-        '''
         self.n_eval += 1
         return objval
 
     def _opt(self, n_iter):
         # Print Header
-        '''
         print("{:>5} | {} | {:>15}".format(
             "Eval",
             " | ".join([f"{name:>15}" for name in self.names]),
             "ObjVal"
         ))
         print("-" * (20 + self.dim * 20))
-        '''
 
         if not self.initialized:
             self._initialize()
+
+        stable_count = 0
+        prev_best_objval = None
+
         for p in self.simplex:
             p.f = self.func_impl(p.x)
 
         for i in range(n_iter):
-            self.simplex = sorted(self.simplex, key=lambda p: p.f)
+            self.simplex = sorted(self.simplex, key=lambda p: abs(p.f))  # Sort by absolute value of f
 
-            # centroid
+            best_objval = self.simplex[0].f
+            if prev_best_objval is not None and abs(prev_best_objval - best_objval) < self.tol:
+                stable_count += 1
+                if stable_count >= 50 and abs:
+                    print(f"prev_best_objval: {float(prev_best_objval)}")
+                    print(f"best_objval: {float(best_objval)}")
+                    print("tol: ", float(self.tol))
+                    print("Converged!")
+                    break
+            else:
+                stable_count = 0
+
+            if prev_best_objval is None or abs(best_objval) < abs(prev_best_objval):
+                prev_best_objval = best_objval
+
+
+            # Keep the best point, re-randomize others if stuck
+            if stable_count >= 10:
+                print("Re-randomizing simplex points (except the best one)...")
+                self._re_randomize_simplex()
+
+            # Continue with the usual Nelder-Mead steps
             p_c = self._centroid()
-            # reflect
             p_r = self._reflect(p_c)
 
             if p_r < self.simplex[0]:
@@ -124,7 +143,7 @@ class NelderMead(object):
             else:
                 self.simplex[-1] = p_r
 
-        self.simplex = sorted(self.simplex, key=lambda p: p.f)
+        self.simplex = sorted(self.simplex, key=lambda p: abs(p.f))
         print("\nBest Point: {}".format(self.simplex[0]))
 
     def _centroid(self):
@@ -152,7 +171,7 @@ class NelderMead(object):
         return p
 
     def _parse_minmax(self, params):
-        types = ["real", "integer","mpf"]
+        types = ["real", "integer", "mpf"]
         for name, values in params.items():
             assert values[0] in types, "Invalid param type, Please check it."
 
@@ -163,6 +182,16 @@ class NelderMead(object):
 
     def _initialize(self):
         for i in range(self.dim + 1):
+            p = Point(self.dim)
+            init_val = [mpf((m2 - m1) * np.random.random() + m1) for m1, m2 in zip(self.p_min, self.p_max)]
+            p.x = init_val
+            self.simplex.append(p)
+
+    def _re_randomize_simplex(self):
+        # Keep the best point, and re-randomize others
+        best_point = self.simplex[0]
+        self.simplex = [best_point]  # Start with the best point
+        for i in range(self.dim):
             p = Point(self.dim)
             init_val = [mpf((m2 - m1) * np.random.random() + m1) for m1, m2 in zip(self.p_min, self.p_max)]
             p.x = init_val

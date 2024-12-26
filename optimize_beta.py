@@ -114,7 +114,7 @@ def radii_difference(beta):
     return (R_1(beta) - R_2(beta))
 
 def q_term_difference(beta,R):
-    ret = Q1(beta,R) / Q2(beta,R) - 1
+    ret = Q1(beta,R) - Q2(beta,R) 
     #print(f"beta: {float(beta)}, R: {float(R)}, ret: {float(ret)}")
     return ret
 
@@ -170,12 +170,12 @@ def objective(x):
 
 func = objective
 params = {
-    "beta": ["mpf", (0.0005, 0.005)],
-    "R"   : ["mpf", (1e-27, 1e-25)],
+    "beta": ["mpf", initial_beta, (0.0005, 0.005)],
+    "R"   : ["mpf", R1, (6.4e-26, 6.5e-26)],
 }
 
 nm = NelderMead(func, params)
-nm.minimize(n_iter=100000)
+nm.minimize(n_iter=10000)
 
 optimized_beta  = nm.simplex[0].x[0]
 optimized_R     = nm.simplex[0].x[1]

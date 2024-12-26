@@ -6,7 +6,7 @@ from mpmath import mp, mpf
 
 class NelderMead(object):
 
-    def __init__(self, func, params, tol=mpf('1e-500'),*args, **kwargs):
+    def __init__(self, func, params, tol=mpf('1e-100'),*args, **kwargs):
         """ the Nelder-Mead method
 
         :param func: objective function object
@@ -17,6 +17,7 @@ class NelderMead(object):
         self.n_eval = 0
         self.names = []
         self.p_types = []
+        self.p_init = []
         self.p_min = []
         self.p_max = []
         self.simplex = []
@@ -24,16 +25,17 @@ class NelderMead(object):
         self.tol = tol
         self._parse_minmax(params)
 
-    def initialize(self, init_params):
-        """ Initialize first simplex point
-        :param init_params(list):
-        """
-        assert len(init_params) == (self.dim + 1), "Invalid length of init_params"
-        for param in init_params:
-            p = Point(self.dim)
-            p.x = [mpf(val) for val in param]  # Use mpf for arbitrary precision
-            self.simplex.append(p)
-        self.initialized = True
+    #def initialize(self, init_params):
+    #    """ Initialize first simplex point
+    #    :param init_params(list):
+    #    """
+    #    assert len(init_params) == (self.dim + 1), "Invalid length of init_params"
+    #    for param in init_params:
+    #        p = Point(self.dim)
+    #        p.x = [mpf(val) for val in param]  # Use mpf for arbitrary precision
+    #        p.f = self.func_impl(p.x)
+    #        self.simplex.append(p)
+    #    self.initialized = True
 
     def maximize(self, n_iter=20, delta_r=1, delta_e=2, delta_ic=-0.5, delta_oc=0.5, gamma_s=0.5):
         """ Maximize the objective function. """
@@ -60,22 +62,26 @@ class NelderMead(object):
         if not invalid:
             x = [int(round(x_t)) if p_t == "integer" else x_t for p_t, x_t in zip(self.p_types, x)]
             objval = self._coef * self.func(x)
+        """    
         print("{:5d} | {} | {:>15.5f}".format(
             self.n_eval,
             " | ".join([f"{float(t):15.5f}" for t in x]),
             self._coef * float(objval)
         ))
+        """
         self.n_eval += 1
         return objval
 
     def _opt(self, n_iter):
         # Print Header
+        """
         print("{:>5} | {} | {:>15}".format(
             "Eval",
             " | ".join([f"{name:>15}" for name in self.names]),
             "ObjVal"
         ))
         print("-" * (20 + self.dim * 20))
+        """
 
         if not self.initialized:
             self._initialize()
@@ -89,26 +95,39 @@ class NelderMead(object):
         for i in range(n_iter):
             self.simplex = sorted(self.simplex, key=lambda p: abs(p.f))  # Sort by absolute value of f
 
-            best_objval = self.simplex[0].f
-            if prev_best_objval is not None and abs(prev_best_objval - best_objval) < self.tol:
+            best_objval = self.simplex[0]
+            if prev_best_objval is not None and abs(prev_best_objval.f - best_objval.f) < self.tol:
                 stable_count += 1
-                if stable_count >= 50 and abs:
-                    print(f"prev_best_objval: {float(prev_best_objval)}")
-                    print(f"best_objval: {float(best_objval)}")
+                if stable_count >= 50 and abs(best_objval.f) < self.tol:
+                    print(f"prev_best_objval")
+
+                    for i in range(self.dim):
+                        print(f"{self.names[i]}: {float(prev_best_objval.x[i])}")
+
+                    print(f"prev_best_objval.f:", prev_best_objval.f )
+
+                    print(f"best_objval")
+                    #loop over components of best_objval and print them
+                    for i in range(self.dim):
+                        print(f"{self.names[i]}: {float(best_objval.x[i])}")
+
+                    print(f"best_objval.f: {(best_objval.f)}")
+
                     print("tol: ", float(self.tol))
+
                     print("Converged!")
                     break
             else:
                 stable_count = 0
 
-            if prev_best_objval is None or abs(best_objval) < abs(prev_best_objval):
-                prev_best_objval = best_objval
-
+            if prev_best_objval is None or abs(best_objval.f) < abs(prev_best_objval.f):
+                prev_best_objval = best_objval    
 
             # Keep the best point, re-randomize others if stuck
-            if stable_count >= 10:
-                print("Re-randomizing simplex points (except the best one)...")
+            if stable_count >= 100:
+                #print("Re-randomizing simplex points (except the best one)...")
                 self._re_randomize_simplex()
+                stable_count = 0
 
             # Continue with the usual Nelder-Mead steps
             p_c = self._centroid()
@@ -167,6 +186,27 @@ class NelderMead(object):
     def _generate_point(self, p_c, x_coef):
         p = Point(self.dim)
         p.x = [p_c.x[i] + x_coef * (p_c.x[i] - self.simplex[-1].x[i]) for i in range(self.dim)]
+
+        for i in range(self.dim):
+            if p.x[i] < self.p_min[i]:
+                #print(f"Warning: {self.names[i]} is less than min value. Setting to min value.")
+                p.x[i] = self.p_min[i]
+            elif p.x[i] > self.p_max[i]:
+                #print(f"Warning: {self.names[i]} is greater than max value. Setting to max value.")
+                p.x[i] = self.p_max[i]
+
+        p.f = self.func_impl(p.x)
+        return p
+
+    def _check_bounds(self, p):
+        """ Ensure the point is within bounds. If it is not, reflect it back into bounds. """
+        for i in range(self.dim):
+            if p.x[i] < self.p_min[i]:
+                print(f"Warning: {self.names[i]} is less than min value. Setting to min value.")
+                p.x[i] = self.p_min[i]
+            elif p.x[i] > self.p_max[i]:
+                print(f"Warning: {self.names[i]} is greater than max value. Setting to max value.")
+                p.x[i] = self.p_max[i]
         p.f = self.func_impl(p.x)
         return p
 
@@ -177,14 +217,23 @@ class NelderMead(object):
 
             self.names.append(name)
             self.p_types.append(values[0])
-            self.p_min.append(values[1][0])
-            self.p_max.append(values[1][1])
+            self.p_init.append(values[1])
+            self.p_min.append(values[2][0])
+            self.p_max.append(values[2][1])
 
     def _initialize(self):
-        for i in range(self.dim + 1):
+
+        self.simplex = []
+        p = Point(self.dim)
+        p.x = self.p_init
+        p.f = self.func_impl(p.x)
+        self.simplex.append(p)
+
+        for i in range(self.dim) :
             p = Point(self.dim)
             init_val = [mpf((m2 - m1) * np.random.random() + m1) for m1, m2 in zip(self.p_min, self.p_max)]
             p.x = init_val
+            p.f = self.func_impl(p.x)
             self.simplex.append(p)
 
     def _re_randomize_simplex(self):
@@ -195,6 +244,7 @@ class NelderMead(object):
             p = Point(self.dim)
             init_val = [mpf((m2 - m1) * np.random.random() + m1) for m1, m2 in zip(self.p_min, self.p_max)]
             p.x = init_val
+            p.f = self.func_impl(p.x)
             self.simplex.append(p)
 
 
@@ -202,7 +252,7 @@ class Point(object):
 
     def __init__(self, dim):
         self.x = [mpf(0) for _ in range(dim)]  # Use mpf for arbitrary precision
-        self.f = mpf(0)
+        self.f = None
 
     def __str__(self):
         return "Params: {}, ObjValue: {}".format(

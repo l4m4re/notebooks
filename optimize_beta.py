@@ -14,7 +14,20 @@ e     = q  # * sqrt(k_air)     # Elementary charge (C)
 eta   = 1 / (4 * pi * 1e-7)    # viscosity [Pa-s], [kg/m-s], [N-s/m^2], [J-s/m^3]
 rho   = eta/k                  # 8.854187817620389e-12
 
-alpha_codata = 0.007297352569311 # fine structure constant
+"""
+
+https://en.wikipedia.org/wiki/Fine-structure_constant
+
+Further refinement of the experimental value was published by the end of 2020,
+giving the value ⁠1/α⁠ = 137.035999206(11),
+
+with a relative accuracy of 8.1×10−11, which has a significant discrepancy from
+the previous experimental value
+
+"""
+
+#alpha_codata = 0.007297352564311 # fine structure constant
+alpha_codata = 1/137.03599920611
 
 # Experimental values https://en.wikipedia.org/wiki/Anomalous_magnetic_dipole_moment
 a_e  = 0.00115965218059    # electron magnetic moment anomaly
@@ -22,6 +35,7 @@ a_mu = 0.00116592059       # muon magnetic moment anomaly
 #mma  = 1.001165923         # Stowe's magnetic moment anomaly
 #mma  = 1.001159652181      # ChatGPT magnetic moment anomaly
 mma  = 1 + a_e
+
 
 #k_air = 3/( 1/(2*alpha_codata * (2 *pi * mma)**2) )**2
 
@@ -319,24 +333,23 @@ def f(alpha,beta, R, k_air, return_all=False):
     e1 =        rho * k       *  pi * R   *   sqrt(1 - beta**2)
     e2 = (2 * m * c * alpha ) / (pi * R ) /   sqrt(1 - beta**2) 
 
-    # Optimized beta          : 0.002333205376442
-    # q                       : 1.602176634439747e-19
-    # q1                      : 1.6012456415138005e-19
-    # q2                      : 1.603108168661673e-19
-    # Initial beta / Optimized: 1.0
-    # 1 / sqrt(1 - beta)      : 1.001168648108344
-    # 1/sqrt(1 + beta)        : 0.9988354347933593
-    # sqrt((1 + beta**2)/(1 - beta**2)): 1.0000054438621464
-    # Optimized R             : 6.405e-26
-    # k_air                   : 1.0005898
-    # sqrt(k_air)             : 1.0002948565298133
-    # k_air**2                : 1.00117994786404
-    # vcmb                    : 699.4773748223624 km/s
-    # vcmb/sqrt(pi)           : 394.63784880210653 km/s
-    # Optimized alpha         : 0.007297352569311
-    # alpha / alpha_codata    : 1.0
-    # alpha_codata / alpha    : 1.0
-
+    # Optimized beta          : 0.002046301916466679
+    # q                       : 1.602176633737347e-19
+    # q1                      : 1.5935004440812493e-19
+    # q2                      : 1.6109000629579074e-19
+    # Initial beta / Optimized: 1.010651152494397
+    # 1 / sqrt(1 - beta)      : 1.0010247238975445
+    # 1/sqrt(1 + beta)        : 0.9989784166256943
+    # sqrt((1 + beta**2)/(1 - beta**2)): 1.0000041873603003
+    # Optimized R             : 6.374015121459963e-26
+    # k_air                   : 1.0005897823706056
+    # sqrt(k_air)             : 1.0002948477177145
+    # k_air**2                : 1.0011799125844558
+    # vcmb                    : 613.4658813476564 km/s
+    # vcmb/sqrt(pi)           : 346.1110601182915 km/s
+    # Optimized alpha         : 0.007297352562912631
+    # alpha / alpha_codata    : 1.000000000018
+    # alpha_codata / alpha    : 0.999999999982
 
     #e1 = rho *  k * pi * R                *   (1 - beta)
     #e2 = (2 * m * c * alpha ) / (pi * R ) /   (1 - beta) 
@@ -405,7 +418,8 @@ first_guess = [alpha_codata, initial_beta, R_initial, 1.0005898]
 
 #print(f"First guess             : {(first_guess)}")
 
-fac = 1+1.6e-10
+#fac = 1+1.6e-10
+fac = 1+1.8e-11
 
 bounds = Bounds(
     [alpha_codata/fac, beta_lower, 6.3e-26, 1.00058986 - 0.00000050],
